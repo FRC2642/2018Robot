@@ -9,6 +9,8 @@
 **/bin
 **/tmp
 
+**/build
+**/dist
 **/*.tmp
 **/*.bak
 **/*.swp
