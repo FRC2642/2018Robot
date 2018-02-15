@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2642.robot.commands;
 
+import org.usfirst.frc.team2642.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,6 +12,7 @@ public class ArcadeDriveCommand extends Command {
     public ArcadeDriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    //	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
