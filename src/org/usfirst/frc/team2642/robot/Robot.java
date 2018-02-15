@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team2642.robot;
 
+import org.usfirst.frc.team2642.robot.subsystems.DriveTrainSystem;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -21,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+	public static final DriveTrainSystem driveTrain = new DriveTrainSystem();
 	//public static final ExampleSubsystem kExampleSubsystem
 	//		= new ExampleSubsystem();
 	public static OI m_oi;

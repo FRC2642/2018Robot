@@ -14,7 +14,6 @@ package org.usfirst.frc.team2642.robot;
  * floating around.
  */
 public class RobotMap {
-	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
 	public static int rightDriveMotorPort = 1;
@@ -23,7 +22,17 @@ public class RobotMap {
 	public static int intakeInMotorPort = 4;
 	public static int intakeOutMotorPort = 5;
 	public static int intakeTiltMotorPort = 6;
+	
 	//ports for driver station stuff
 	public static int auxilleryControlsPort = 1;
 	public static int xboxControllerPort = 0;
+	
+	//ports for encoders 
+	public static int leftEncoderChannelA = 0;
+	public static int leftEncoderChannelB = 1;
+	public static int rightEncoderChannelA = 2;
+	public static int rightEncoderChannelB = 3;
+	
+	//Encoder measurements
+	public static final double PULSES_PER_INCH = 0;
 }
