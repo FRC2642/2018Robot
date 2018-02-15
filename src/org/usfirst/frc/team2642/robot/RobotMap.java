@@ -15,6 +15,14 @@ package org.usfirst.frc.team2642.robot;
  */
 public class RobotMap {
 	
+	//ports for subsystem motors
+	public static int leftDriveMotorPort = 0;
+	public static int rightDriveMotorPort = 1;
+	public static int climbHookMotorPort = 2; //may not be needed
+	public static int liftMotorPort = 3;
+	public static int intakeInMotorPort = 4;
+	public static int intakeOutMotorPort = 5;
+	public static int intakeTiltMotorPort = 6;
 	//ports for driver station stuff
 	public static int auxilleryControlsPort = 1;
 	public static int xboxControllerPort = 0;
