@@ -22,18 +22,24 @@ public class OI {
 	/*
 	Left stick = drive 0.6, turn 0.6		Regular Drive
 	Left trigger = drive 1.0, turn 0.6		High Speed Drive
-	Right trigger = drive 1.0, turn 1.0		High Speed Turn	 
-	
-	Right stick = intake tilt up and down
-	 */
-	Button xboxLeftBumper = new JoystickButton(xbox, 5);  //lift down
-	Button xboxRightBumper = new JoystickButton(xbox, 6); //lift up
-	
-	Button xboxA = new JoystickButton(xbox, 1); 	//intake in
-	Button xboxX = new JoystickButton(xbox, 3);		//intake out
-	
-	
+	Right trigger = drive 1.0, turn 1.0		High Speed Turn	
+	 */	
 		
-	public static Joystick auxillery = new Joystick(RobotMap.auxilleryControlsPort);
+	public static XboxController auxXbox = new XboxController(RobotMap.auxXboxControllerPort);
 	
+	Button auxXboxA = new JoystickButton(auxXbox, 1);
+	Button auxXboxX = new JoystickButton(auxXbox, 3);
+	/*
+	Left stick = tilt up and down 
+	
+	Right stick = lift up and down 
+	
+	Left trigger = intake in
+	Right trigger = intake out (eject)
+	*/
+	public OI() {
+		
+	auxXboxA.whenPressed(new DeployHook()); 
+	auxXboxX.whenPressed(new ResetHook());
+	}
 }
