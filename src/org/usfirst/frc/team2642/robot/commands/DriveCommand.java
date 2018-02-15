@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2642.robot.commands;
 
+import org.usfirst.frc.team2642.robot.OI;
 import org.usfirst.frc.team2642.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ArcadeDriveCommand extends Command {
+public class DriveCommand extends Command {
 
-    public ArcadeDriveCommand() {
+    public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     //	requires(Robot.drive);
@@ -21,6 +22,9 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(OI.xbox.getRawAxis(3) > .6) {
+    		
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

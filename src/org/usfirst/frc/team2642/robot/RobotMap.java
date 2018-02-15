@@ -24,6 +24,6 @@ public class RobotMap {
 	public static int intakeOutMotorPort = 5;
 	public static int intakeTiltMotorPort = 6;
 	//ports for driver station stuff
-	public static int auxilleryControlsPort = 1;
+	public static int auxXboxControllerPort = 1;
 	public static int xboxControllerPort = 0;
 }
