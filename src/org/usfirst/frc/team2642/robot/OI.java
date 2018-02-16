@@ -38,8 +38,7 @@ public class OI {
 	Right trigger = intake out (eject)
 	*/
 	public OI() {
-		
-	auxXboxA.whenPressed(new DeployHook()); 
-	auxXboxX.whenPressed(new ResetHook());
+		auxXboxA.whenPressed(new DeployHook()); 
+		auxXboxX.whenPressed(new ResetHook());
 	}
 }

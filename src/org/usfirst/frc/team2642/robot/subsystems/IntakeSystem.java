@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class IntakeSystem extends Subsystem {
+	
 	//Intake motors
-	Victor intakeMotor1 = new Victor(RobotMap.intakeMotor1Port);
-	Victor intakeMotor2 = new Victor(RobotMap.intakeMotor2Port);
+	Victor intakeMotor1= new Victor(RobotMap.intakeMotor1Port);
 
+	Victor intakeMotor2 = new Victor(RobotMap.intakeMotor2Port);
+  
     public void initDefaultCommand() {
     }
     
