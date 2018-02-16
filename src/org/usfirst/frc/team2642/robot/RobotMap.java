@@ -16,18 +16,22 @@ package org.usfirst.frc.team2642.robot;
 public class RobotMap {
 	
 	//ports for subsystem pneumatic cylinders
-	public static int climbCylinder = 0;
-	public static int brakeCylinder = 1;
-	public static int leftRampCylinder = 2;
-	public static int rightRampCylinder = 3;
+	public static int climbCylinderChannel1 = 0;
+	public static int climbCylinderChannel2 = 1;
+	public static int brakeCylinderChannel1 = 2;
+	public static int brakeCylinderChannel2 = 3;
+	public static int leftRampCylinderChannel1 = 4;
+	public static int leftRampCylinderChannel2 = 5;
+	public static int rightRampCylinderChannel1 = 6;
+	public static int rightRampCylinderChannel2 = 7;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
 	public static int rightDriveMotorPort = 1;
-	public static int liftMotorPort = 3;
-	public static int intakeMotor1Port = 4;
-	public static int intakeMotor2Port = 5;
-	public static int intakeTiltMotorPort = 6;
+	public static int liftMotorPort = 2;
+	public static int intakeMotor1Port = 3;
+	public static int intakeMotor2Port = 4;
+	public static int intakeTiltMotorPort = 5;
 	
 	//ports for driver station stuff
 	public static int auxXboxControllerPort = 1;
