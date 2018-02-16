@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team2642.robot;
 
+import org.usfirst.frc.team2642.robot.subsystems.ClimbBrakeSystem;
+import org.usfirst.frc.team2642.robot.subsystems.ClimbSystem;
 import org.usfirst.frc.team2642.robot.subsystems.DriveTrainSystem;
 import org.usfirst.frc.team2642.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
@@ -27,11 +29,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+	public static final ClimbBrakeSystem brake = new ClimbBrakeSystem();
+	public static final ClimbSystem      climb = new ClimbSystem();
 	public static final DriveTrainSystem drive = new DriveTrainSystem();
-	public static final LiftSystem lift = new LiftSystem();
+	public static final IntakeSystem     intake = new IntakeSystem();
 	public static final IntakeTiltSystem tilt = new IntakeTiltSystem();
-	public static final IntakeSystem intake = new IntakeSystem();
-	public static final RampSystem ramp = new RampSystem();
+	public static final LiftSystem       lift = new LiftSystem();
+	public static final RampSystem       ramp = new RampSystem();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
