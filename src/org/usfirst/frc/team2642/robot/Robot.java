@@ -9,9 +9,9 @@ package org.usfirst.frc.team2642.robot;
 
 import org.usfirst.frc.team2642.robot.subsystems.DriveTrainSystem;
 import org.usfirst.frc.team2642.robot.subsystems.IntakeSystem;
+import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
 import org.usfirst.frc.team2642.robot.subsystems.LiftSystem;
 import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
-import org.usfirst.frc.team2642.robot.subsystems.TiltIntakeSystem;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -29,7 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	public static final DriveTrainSystem drive = new DriveTrainSystem();
 	public static final LiftSystem lift = new LiftSystem();
-	public static final TiltIntakeSystem tilt = new TiltIntakeSystem();
+	public static final IntakeTiltSystem tilt = new IntakeTiltSystem();
 	public static final IntakeSystem intake = new IntakeSystem();
 	public static final RampSystem ramp = new RampSystem();
 	public static OI m_oi;

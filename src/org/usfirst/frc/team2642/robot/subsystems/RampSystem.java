@@ -11,10 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RampSystem extends Subsystem {
 
-	DoubleSolenoid leftRampCylinder = new DoubleSolenoid
-			(RobotMap.leftRampCylinderChannel1, RobotMap.leftRampCylinderChannel2);
-	DoubleSolenoid rightRampCylinder = new DoubleSolenoid
-			(RobotMap.rightRampCylinderChannel1, RobotMap.rightRampCylinderChannel2);
+	DoubleSolenoid leftRampCylinder = new DoubleSolenoid(RobotMap.leftRampCylinderChannel1, RobotMap.leftRampCylinderChannel2);
+	DoubleSolenoid rightRampCylinder = new DoubleSolenoid(RobotMap.rightRampCylinderChannel1, RobotMap.rightRampCylinderChannel2);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
