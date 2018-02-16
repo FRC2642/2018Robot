@@ -11,19 +11,25 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveCommand extends Command {
 
     public DriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    //	requires(Robot.drive);
+    	requires(Robot.drive);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.xbox.getRawAxis(3) > .6) {
+    	
+    	//right trigger is pulled: High Speed Turn
+    	if(OI.xbox.getRawAxis(3) > .5) {
+    		Robot.drive.move(-OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * 1);
     		
+    	//left trigger is pulled: High Speed Drive
+    	} else if(OI.xbox.getRawAxis(2) > .5) {
+    		Robot.drive.move(-OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * .6);
+    		
+    	//no trigger is pulled: Regular Drive
+    	} else {
+    		Robot.drive.move(-OI.xbox.getRawAxis(1) * .6, OI.xbox.getRawAxis(0) * .6);
     	}
     }
 
@@ -34,10 +40,12 @@ public class DriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.drive.stop();
     }
 }
