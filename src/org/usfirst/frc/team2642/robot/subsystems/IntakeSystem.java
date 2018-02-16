@@ -1,18 +1,37 @@
 package org.usfirst.frc.team2642.robot.subsystems;
 
+import org.usfirst.frc.team2642.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class IntakeSystem extends Subsystem {
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	//Intake motors
+	Victor intakeMotor1= new Victor(RobotMap.intakeInMotorPort);
+	Victor intakeMotor2 = new Victor(RobotMap.intakeOutMotorPort);
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    //Grabs cube
+    public void intakeIn() {
+    	intakeMotor1.set(.5);
+    	intakeMotor2.set(-.5);
+    }
+    
+    //Ejects cube
+    public void intakeOut() {
+    	intakeMotor1.set(-.5);
+    	intakeMotor2.set(.5);
+    }
+    
+    //Stop motors
+    public void stopIntake() {
+    	intakeMotor1.set(0.0);
+    	intakeMotor2.set(0.0);
     }
 }
 

@@ -67,7 +67,7 @@ public class DriveTrainSystem extends Subsystem {
     }
     
     public double getAverageDistance() {
-    	return ((getPulsesLeft() + getPulsesRight()) / ( 2 * RobotMap.PULSES_PER_INCH));
+    	return (((getPulsesLeft() + getPulsesRight()) / 2 ) / RobotMap.PULSES_PER_INCH);
     }
     
     public double getCurrentHeading() {
