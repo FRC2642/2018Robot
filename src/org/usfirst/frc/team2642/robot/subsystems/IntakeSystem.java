@@ -12,7 +12,7 @@ public class IntakeSystem extends Subsystem {
 	//Intake motors
 	Victor intakeMotor1= new Victor(RobotMap.intakeInMotorPort);
 	Victor intakeMotor2 = new Victor(RobotMap.intakeOutMotorPort);
-
+	
     public void initDefaultCommand() {
     }
     
