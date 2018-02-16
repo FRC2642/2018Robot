@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
-import org.usfirst.frc.team2642.robot.commands.ArcadeDriveCommand;
+import org.usfirst.frc.team2642.robot.commands.DriveCommand;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -30,7 +30,7 @@ public class DriveTrainSystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new ArcadeDriveCommand());
+    	setDefaultCommand(new DriveCommand());
     }
     
     public void move(double moveValue, double rotateValue) {
@@ -67,7 +67,7 @@ public class DriveTrainSystem extends Subsystem {
     }
     
     public double getAverageDistance() {
-    	return ((getPulsesLeft() + getPulsesRight()) / ( 2 * RobotMap.PULSES_PER_INCH));
+    	return (((getPulsesLeft() + getPulsesRight()) / 2 ) / RobotMap.PULSES_PER_INCH);
     }
     
     public double getCurrentHeading() {
