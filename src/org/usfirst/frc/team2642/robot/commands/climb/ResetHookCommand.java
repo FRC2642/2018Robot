@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DeployHookCommand extends Command {
+public class ResetHookCommand extends Command {
 
-    public DeployHookCommand() {
+    public ResetHookCommand() {
     	requires(Robot.climb);
     }
 
@@ -19,12 +19,12 @@ public class DeployHookCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.climb.resetHook();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.climb.climbHook.get() == true) {
+    	if (Robot.climb.climbHook.get() == false) {
             return true;
     	}
     	else {

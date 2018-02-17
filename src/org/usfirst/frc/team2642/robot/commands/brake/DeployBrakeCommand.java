@@ -1,16 +1,17 @@
-package org.usfirst.frc.team2642.robot.commands.ramp;
+package org.usfirst.frc.team2642.robot.commands.brake;
 
 import org.usfirst.frc.team2642.robot.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LiftRampCommand extends Command {
+public class DeployBrakeCommand extends Command {
 
-    public LiftRampCommand() {
-    	requires(Robot.ramp);
+    public DeployBrakeCommand() {
+    	requires(Robot.brake);
     }
 
     // Called just before this Command runs the first time
@@ -19,12 +20,12 @@ public class LiftRampCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ramp.liftRamp();
+    	Robot.brake.deployBrake();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.ramp.liftRampCylinder.get() == true) {
+    	if (Robot.brake.brakeCylinder.get() == Value.kForward) {
             return true;
     	}
     	else {
