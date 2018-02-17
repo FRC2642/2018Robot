@@ -12,6 +12,7 @@ import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.DeployRampCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.RaiseRampCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.ResetRampCommand;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -54,6 +55,8 @@ public class OI {
 		auxXboxY.whenPressed(new DeployBrakeCommand());
 		
 		xboxA.whenPressed(new DeployRampCommand());
+		xboxA.whenPressed(new ResetRampCommand());
+		
 		xboxX.whenPressed(new RaiseRampCommand());
 	}
 }
