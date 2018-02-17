@@ -19,14 +19,14 @@ public class RobotMap {
 	public static int liftPotPort = 1;
 	
 	//ports for subsystem pneumatic cylinders
-	public static int climbCylinderChannel1 = 0;
-	public static int climbCylinderChannel2 = 1;
+	public static int climbCylinderChannel = 0;
+	//public static int climgCylinderChannel2 = 1;
 	public static int brakeCylinderChannel1 = 2;
 	public static int brakeCylinderChannel2 = 3;
-	public static int leftRampCylinderChannel1 = 4;
-	public static int leftRampCylinderChannel2 = 5;
-	public static int rightRampCylinderChannel1 = 6;
-	public static int rightRampCylinderChannel2 = 7;
+	public static int rampCylinderChannel1 = 4;
+	public static int rampCylinderChannel2 = 5;
+	public static int liftRampCylinderChannel = 6;
+	//public static int rightRampCylinderChannel2 = 7;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
