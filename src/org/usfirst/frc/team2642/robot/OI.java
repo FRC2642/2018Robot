@@ -18,6 +18,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	public static XboxController xbox = new XboxController(RobotMap.xboxControllerPort);
+	
+	Button xboxA = new JoystickButton(xbox, 1);
+	Button xboxX = new JoystickButton(xbox, 3);
 	/*
 	Left stick = drive 0.6, turn 0.6		Regular Drive
 	Left trigger = drive 1.0, turn 0.6		High Speed Drive
@@ -28,6 +31,7 @@ public class OI {
 	
 	Button auxXboxA = new JoystickButton(auxXbox, 1);
 	Button auxXboxX = new JoystickButton(auxXbox, 3);
+	Button auxXboxY = new JoystickButton(auxXbox, 4);
 	/*
 	Left stick = tilt up and down 
 	
@@ -37,5 +41,13 @@ public class OI {
 	Right trigger = intake out (eject)
 	*/
 	public OI() {
+
+		auxXboxA.whenPressed(new DeployHookCommand()); 
+		auxXboxX.whenPressed(new ResetHookCommand());
+		
+		auxXboxY.whenPressed(new DeployBrakeCommand());
+		
+		xboxA.whenPressed(new DeployRamp());
+		xboxX.whenPressed(new RaiseRampCommand());
 	}
 }
