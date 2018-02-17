@@ -15,8 +15,8 @@ package org.usfirst.frc.team2642.robot;
  */
 public class RobotMap {
 	//ports for sonar
-	public static int sonarInputPort = 3;
-	public static int sonarOutputPort = 4;
+	public static int sonarInputPort = 4;
+	public static int sonarOutputPort = 5;
 	
 	//ports for potentiometers
 	public static int tiltPotPort = 0;
