@@ -17,6 +17,7 @@ import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -42,6 +43,8 @@ public class Robot extends TimedRobot {
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
+	public static Ultrasonic sonar = new Ultrasonic(RobotMap.sonarInputPort, RobotMap.sonarOutputPort);
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -54,6 +57,7 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		compressor.start();
+		sonar.setAutomaticMode(true);
 	}
 
 	/**
