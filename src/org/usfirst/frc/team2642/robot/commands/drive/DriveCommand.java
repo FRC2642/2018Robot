@@ -19,6 +19,7 @@ public class DriveCommand extends Command {
 
     protected void execute() {
     	
+
     	//High Speed Turn
     	if(isRightTriggerPulled()) {
     		Robot.drive.move(OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * 1);

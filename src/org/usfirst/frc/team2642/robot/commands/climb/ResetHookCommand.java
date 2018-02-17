@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2642.robot.commands;
+package org.usfirst.frc.team2642.robot.commands.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 
