@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ClimbSystem extends Subsystem {
 
-	Solenoid climbHook = new Solenoid(RobotMap.climbCylinderChannel);
+	public Solenoid climbHook = new Solenoid(RobotMap.climbCylinderChannel);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

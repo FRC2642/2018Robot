@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2642.robot.commands.climb;
+package org.usfirst.frc.team2642.robot.commands.ramp;
 
 import org.usfirst.frc.team2642.robot.Robot;
 
@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DeployHookCommand extends Command {
+public class RaiseRampCommand extends Command {
 
-    public DeployHookCommand() {
-    	requires(Robot.climb);
+    public RaiseRampCommand() {
+    	requires(Robot.ramp);
     }
 
     // Called just before this Command runs the first time
@@ -19,12 +19,12 @@ public class DeployHookCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.ramp.liftRamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.climb.climbHook.get() == true) {
+    	if (Robot.ramp.liftRampCylinder.get() == true) {
             return true;
     	}
     	else {
