@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2642.robot;
 
 import org.usfirst.frc.team2642.robot.commands.brake.DeployBrakeCommand;
+import org.usfirst.frc.team2642.robot.commands.brake.ResetBrakeCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.DeployRampCommand;
@@ -27,6 +28,7 @@ public class OI {
 	public static XboxController xbox = new XboxController(RobotMap.xboxControllerPort);
 	
 	Button xboxA = new JoystickButton(xbox, 1);
+	Button xboxB = new JoystickButton(xbox, 2);
 	Button xboxX = new JoystickButton(xbox, 3);
 	/*
 	Left stick = drive 0.6, turn 0.6		Regular Drive
@@ -37,6 +39,7 @@ public class OI {
 	public static XboxController auxXbox = new XboxController(RobotMap.auxXboxControllerPort);
 	
 	Button auxXboxA = new JoystickButton(auxXbox, 1);
+	Button auxXboxB = new JoystickButton(auxXbox, 2);
 	Button auxXboxX = new JoystickButton(auxXbox, 3);
 	Button auxXboxY = new JoystickButton(auxXbox, 4);
 	/*
@@ -53,9 +56,10 @@ public class OI {
 		auxXboxX.whenPressed(new ResetHookCommand());
 		
 		auxXboxY.whenPressed(new DeployBrakeCommand());
+		auxXboxB.whenPressed(new ResetBrakeCommand());
 		
 		xboxA.whenPressed(new DeployRampCommand());
-		xboxA.whenPressed(new ResetRampCommand());
+		xboxB.whenPressed(new ResetRampCommand());
 		
 		xboxX.whenPressed(new RaiseRampCommand());
 	}
