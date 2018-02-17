@@ -2,7 +2,7 @@ package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class IntakeTiltSystem extends PIDSubsystem {
 	
 	//Motor to tilt intake arm
-	Victor intakeTiltMotor = new Victor(RobotMap.intakeTiltMotorPort);
+	VictorSP intakeTiltMotor = new VictorSP(RobotMap.intakeTiltMotorPort);
     
     public IntakeTiltSystem() {
         // Use these to get going:

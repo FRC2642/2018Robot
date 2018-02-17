@@ -2,7 +2,7 @@ package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class LiftSystem extends PIDSubsystem {
 	//Lift motor
-	Victor liftMotor = new Victor(RobotMap.liftMotorPort);
+	VictorSP liftMotor = new VictorSP(RobotMap.liftMotorPort);
    
 	public LiftSystem() {
         // Use these to get going:
