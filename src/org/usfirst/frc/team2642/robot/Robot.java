@@ -15,6 +15,7 @@ import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
 import org.usfirst.frc.team2642.robot.subsystems.LiftSystem;
 import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
 	public static final IntakeTiltSystem tilt = new IntakeTiltSystem();
 	public static final LiftSystem       lift = new LiftSystem();
 	public static final RampSystem       ramp = new RampSystem();
+	public static final Compressor compressor = new Compressor();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
@@ -51,6 +53,7 @@ public class Robot extends TimedRobot {
 	//	m_chooser.addDefault("Default Auto", new ());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		compressor.start();
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
+import org.usfirst.frc.team2642.robot.commands.lift.LiftCommand;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
@@ -27,6 +28,7 @@ public class LiftSystem extends PIDSubsystem {
     }
 
     public void initDefaultCommand() {
+    	setDefaultCommand(new LiftCommand());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
@@ -45,6 +47,15 @@ public class LiftSystem extends PIDSubsystem {
 
     //Raises or lowers lift
     public void moveLift(double speed) {
+    	/*if ((liftPot.get() <= 1.0) && (speed > 0)) {
+    		liftMotor.set(speed);
+    	}
+    	else if ((liftPot.get() >= 3.0) && (speed < 0)) {
+    		liftMotor.set(speed);
+    	}
+    	else {
+    		liftMotor.set(0.0);
+    	}*/
     	liftMotor.set(speed);
     }
     

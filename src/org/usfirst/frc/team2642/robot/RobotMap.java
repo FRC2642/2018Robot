@@ -31,10 +31,10 @@ public class RobotMap {
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
 	public static int rightDriveMotorPort = 1;
-	public static int liftMotorPort = 2;
-	public static int intakeMotor1Port = 3;
-	public static int intakeMotor2Port = 4;
-	public static int intakeTiltMotorPort = 5;
+	public static int liftMotorPort = 3;
+	public static int intakeMotor1Port = 4;
+	public static int intakeMotor2Port = 5;
+	public static int intakeTiltMotorPort = 6;
 	
 	//ports for driver station stuff
 	public static int auxXboxControllerPort = 1;
