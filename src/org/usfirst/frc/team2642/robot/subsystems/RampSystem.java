@@ -23,12 +23,17 @@ public class RampSystem extends Subsystem {
     public void deployRamp() {
     	rampCylinder.set(Value.kForward);
     }
+    
     public void resetRamp() {
     	rampCylinder.set(Value.kReverse);
     }
     
-    public void liftRamp() {
+    public void raiseRamp() {
     	liftRampCylinder.set(true);
     }	
+    
+    public void lowerRamp() {
+    	liftRampCylinder.set(false);
+    }
 }
 
