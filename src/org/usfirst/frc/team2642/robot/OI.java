@@ -7,10 +7,9 @@
 
 package org.usfirst.frc.team2642.robot;
 
-import org.usfirst.frc.team2642.robot.commands.ResetHookCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
+import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

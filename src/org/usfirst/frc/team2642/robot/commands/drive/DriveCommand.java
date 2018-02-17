@@ -21,15 +21,15 @@ public class DriveCommand extends Command {
     	
     	//right trigger is pulled: High Speed Turn
     	if(OI.xbox.getRawAxis(3) > .5) {
-    		Robot.drive.move(-OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * 1);
+    		Robot.drive.move(OI.xbox.getRawAxis(1), OI.xbox.getRawAxis(0));
     		
     	//left trigger is pulled: High Speed Drive
     	} else if(OI.xbox.getRawAxis(2) > .5) {
-    		Robot.drive.move(-OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * .6);
+    		Robot.drive.move(OI.xbox.getRawAxis(1), OI.xbox.getRawAxis(0) * .6);
     		
     	//no trigger is pulled: Regular Drive
     	} else {
-    		Robot.drive.move(-OI.xbox.getRawAxis(1) * .6, OI.xbox.getRawAxis(0) * .6);
+    		Robot.drive.move(OI.xbox.getRawAxis(1) * .6, OI.xbox.getRawAxis(0) * .6);
     	}
     }
 

@@ -8,7 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SerialPort.Port;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -17,16 +17,21 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveTrainSystem extends Subsystem {
 	//Motor controllers
-	public Victor leftDrive = new Victor(RobotMap.leftDriveMotorPort);
-	public Victor rightDrive = new Victor(RobotMap.rightDriveMotorPort);
+	public VictorSP leftDrive = new VictorSP(RobotMap.leftDriveMotorPort);
+	public VictorSP rightDrive = new VictorSP(RobotMap.rightDriveMotorPort);
 	
 	//Sensors
 	public AHRS gyro = new AHRS(Port.kUSB1);
 	public Encoder leftEncoder = new Encoder(RobotMap.leftEncoderChannelA, RobotMap.leftEncoderChannelB, false, EncodingType.k4X);
 	public Encoder rightEncoder = new Encoder(RobotMap.rightEncoderChannelA, RobotMap.rightEncoderChannelB, false, EncodingType.k4X);
-
+	
 	//DifferentialDrive
 	DifferentialDrive drive = new DifferentialDrive(leftDrive, rightDrive);
+	
+	public DriveTrainSystem() {
+		rightDrive.setInverted(false);
+		leftDrive.setInverted(false);
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
