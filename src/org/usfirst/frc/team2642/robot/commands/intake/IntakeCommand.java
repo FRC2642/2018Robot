@@ -56,6 +56,7 @@ public class IntakeCommand extends Command {
     		return false;
     	}
     }
+    
     public boolean isLeftTriggerPulled() {
     	if(OI.auxXbox.getRawAxis(2) > .5) {
     	return true;
