@@ -16,7 +16,7 @@ public class IntakeTiltSystem extends PIDSubsystem {
 	//Motor to tilt intake arm
 	VictorSP intakeTiltMotor = new VictorSP(RobotMap.intakeTiltMotorPort);
     
-	AnalogPotentiometer tiltPot = new AnalogPotentiometer(RobotMap.tiltPotPort); 
+	public AnalogPotentiometer tiltPot = new AnalogPotentiometer(RobotMap.tiltPotPort); 
 	
     public IntakeTiltSystem() {
     	//P, I, and D values
