@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RaiseRampCommand extends Command {
+public class LowerRampCommand extends Command {
 
-    public RaiseRampCommand() {
+    public LowerRampCommand() {
     	requires(Robot.ramp);
     }
 
@@ -19,12 +19,12 @@ public class RaiseRampCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ramp.raiseRamp();
+    	Robot.ramp.lowerRamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.ramp.liftRampCylinder.get() == true) {
+    	if (Robot.ramp.liftRampCylinder.get() == false) {
             return true;
     	}
     	else {
