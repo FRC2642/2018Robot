@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -12,12 +13,15 @@ public class LiftSystem extends PIDSubsystem {
 	//Lift motor
 	Victor liftMotor = new Victor(RobotMap.liftMotorPort);
    
+	AnalogPotentiometer liftPot = new AnalogPotentiometer(RobotMap.liftPotPort); 
+
 	public LiftSystem() {
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
 		super(.001, 0, 0);
+		disable();
     }
 
     public void initDefaultCommand() {

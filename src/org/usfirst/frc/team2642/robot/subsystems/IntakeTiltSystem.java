@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -13,14 +14,12 @@ public class IntakeTiltSystem extends PIDSubsystem {
 	//Motor to tilt intake arm
 	Victor intakeTiltMotor = new Victor(RobotMap.intakeTiltMotorPort);
     
+	AnalogPotentiometer tiltPot = new AnalogPotentiometer(RobotMap.tiltPotPort); 
+	
     public IntakeTiltSystem() {
-        // Use these to get going:
-        // setSetpoint() -  Sets where the PID controller should move the system
-        //                  to
-        // enable() - Enables the PID controller.
-    	
     	//P, I, and D values
     	super(.001, 0, 0);
+    	disable();
     }
 
     public void initDefaultCommand() {
