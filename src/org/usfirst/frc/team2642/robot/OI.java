@@ -7,6 +7,12 @@
 
 package org.usfirst.frc.team2642.robot;
 
+import org.usfirst.frc.team2642.robot.commands.brake.DeployBrakeCommand;
+import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
+import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.DeployRampCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.RaiseRampCommand;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -47,7 +53,7 @@ public class OI {
 		
 		auxXboxY.whenPressed(new DeployBrakeCommand());
 		
-		xboxA.whenPressed(new DeployRamp());
+		xboxA.whenPressed(new DeployRampCommand());
 		xboxX.whenPressed(new RaiseRampCommand());
 	}
 }
