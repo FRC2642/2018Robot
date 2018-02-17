@@ -15,7 +15,7 @@ public class LiftSystem extends PIDSubsystem {
 	//Lift motor
 	VictorSP liftMotor = new VictorSP(RobotMap.liftMotorPort);
    
-	AnalogPotentiometer liftPot = new AnalogPotentiometer(RobotMap.liftPotPort); 
+	public AnalogPotentiometer liftPot = new AnalogPotentiometer(RobotMap.liftPotPort); 
 
 	public LiftSystem() {
         // Use these to get going:
@@ -43,18 +43,13 @@ public class LiftSystem extends PIDSubsystem {
         // e.g. yourMotor.set(output);
     }
 
-    //Raises the lift
-    public void raiseLift() {
-    	liftMotor.set(.7);
-    }
-    
-    //Lowers the lift
-    public void lowerLift() {
-    	liftMotor.set(-.7);
+    //Raises or lowers lift
+    public void moveLift(double speed) {
+    	liftMotor.set(speed);
     }
     
     //Off
-    public void stopLift() {
+    public void stop() {
     	liftMotor.set(0.0);
     }
 }
