@@ -24,9 +24,14 @@ public class DriveTrainSystem extends Subsystem {
 	public AHRS gyro = new AHRS(Port.kUSB1);
 	public Encoder leftEncoder = new Encoder(RobotMap.leftEncoderChannelA, RobotMap.leftEncoderChannelB, false, EncodingType.k4X);
 	public Encoder rightEncoder = new Encoder(RobotMap.rightEncoderChannelA, RobotMap.rightEncoderChannelB, false, EncodingType.k4X);
-
+	
 	//DifferentialDrive
 	DifferentialDrive drive = new DifferentialDrive(leftDrive, rightDrive);
+	
+	public DriveTrainSystem() {
+		rightDrive.setInverted(false);
+		leftDrive.setInverted(false);
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
