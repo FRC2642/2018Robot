@@ -19,15 +19,16 @@ public class DriveCommand extends Command {
 
     protected void execute() {
     	
-    	//right trigger is pulled: High Speed Turn
-    	if(OI.xbox.getRawAxis(3) > .5) {
-    		Robot.drive.move(OI.xbox.getRawAxis(1), OI.xbox.getRawAxis(0));
+
+    	//High Speed Turn
+    	if(isRightTriggerPulled()) {
+    		Robot.drive.move(OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * 1);
     		
-    	//left trigger is pulled: High Speed Drive
-    	} else if(OI.xbox.getRawAxis(2) > .5) {
-    		Robot.drive.move(OI.xbox.getRawAxis(1), OI.xbox.getRawAxis(0) * .6);
+    	//High Speed Drive
+    	} else if(isLeftTriggerPulled()) {
+    		Robot.drive.move(OI.xbox.getRawAxis(1) * 1, OI.xbox.getRawAxis(0) * .6);
     		
-    	//no trigger is pulled: Regular Drive
+    	//Regular Drive
     	} else {
     		Robot.drive.move(OI.xbox.getRawAxis(1) * .6, OI.xbox.getRawAxis(0) * .6);
     	}
@@ -47,5 +48,20 @@ public class DriveCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.drive.stop();
+    }
+    
+    public boolean isRightTriggerPulled() {
+    	if(OI.xbox.getRawAxis(3) > .5) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    public boolean isLeftTriggerPulled() {
+    	if(OI.xbox.getRawAxis(2) > .5) {
+    	return true;
+    } else {
+    	return false;	
+    	}
     }
 }

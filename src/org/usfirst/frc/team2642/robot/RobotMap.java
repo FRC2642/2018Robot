@@ -14,6 +14,9 @@ package org.usfirst.frc.team2642.robot;
  * floating around.
  */
 public class RobotMap {
+	//ports for potentiometers
+	public static int tiltPotPort = 0;
+	public static int liftPotPort = 1;
 	
 	//ports for subsystem pneumatic cylinders
 	public static int climbCylinderChannel1 = 0;
