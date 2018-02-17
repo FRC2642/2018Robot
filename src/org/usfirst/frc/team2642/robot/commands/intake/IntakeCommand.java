@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2642.robot.commands.lift;
+package org.usfirst.frc.team2642.robot.commands.intake;
 
 import org.usfirst.frc.team2642.robot.OI;
 import org.usfirst.frc.team2642.robot.Robot;
@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LiftCommand extends Command {
+public class IntakeCommand extends Command {
 
-    public LiftCommand() {
+    public IntakeCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lift);
+    	requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,15 @@ public class LiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.moveLift(OI.auxXbox.getRawAxis(5) * .7);
+    	if (isLeftTriggerPulled()) {
+    		Robot.intake.intakeIn();
+    	}
+    	else if (isRightTriggerPulled()) {
+    		Robot.intake.intakeOut();
+    	}
+    	else {
+    		Robot.intake.stop();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,12 +40,27 @@ public class LiftCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.lift.stop();
+    	Robot.intake.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.lift.stop();
+    	Robot.intake.stop();
+    }
+
+    public boolean isRightTriggerPulled() {
+    	if(OI.auxXbox.getRawAxis(3) > .5) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    public boolean isLeftTriggerPulled() {
+    	if(OI.auxXbox.getRawAxis(2) > .5) {
+    	return true;
+    } else {
+    	return false;	
+    	}
     }
 }

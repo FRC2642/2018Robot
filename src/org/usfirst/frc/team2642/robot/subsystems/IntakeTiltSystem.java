@@ -1,11 +1,10 @@
 package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
+import org.usfirst.frc.team2642.robot.commands.tilt.TiltIntakeCommand;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
-
 import edu.wpi.first.wpilibj.VictorSP;
-
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -22,11 +21,12 @@ public class IntakeTiltSystem extends PIDSubsystem {
     	//P, I, and D values
     	super(.001, 0, 0);
     	disable();
+    	intakeTiltMotor.setInverted(true);
     }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new TiltIntakeCommand());
     }
 
     protected double returnPIDInput() {
@@ -46,7 +46,7 @@ public class IntakeTiltSystem extends PIDSubsystem {
     }
     
     //Off
-    public void stopTilt() {
+    public void stop() {
     	intakeTiltMotor.set(0.0);
     }
 
