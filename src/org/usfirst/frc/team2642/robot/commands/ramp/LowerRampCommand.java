@@ -1,6 +1,5 @@
-package org.usfirst.frc.team2642.robot.commands.lift;
+package org.usfirst.frc.team2642.robot.commands.ramp;
 
-import org.usfirst.frc.team2642.robot.OI;
 import org.usfirst.frc.team2642.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,12 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LiftCommand extends Command {
+public class LowerRampCommand extends Command {
 
-    public LiftCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.lift);
+    public LowerRampCommand() {
+    	requires(Robot.ramp);
     }
 
     // Called just before this Command runs the first time
@@ -22,24 +19,25 @@ public class LiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.moveLift(OI.auxXbox.getRawAxis(5) * .7);
+    	Robot.ramp.lowerRamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if (Robot.ramp.liftRampCylinder.get() == false) {
+            return true;
+    	}
+    	else {
+            return false;
+    	}
     }
 
-    // Called once after isFinished returns true+
-    
-   
+    // Called once after isFinished returns true
     protected void end() {
-    	Robot.lift.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.lift.stop();
     }
 }

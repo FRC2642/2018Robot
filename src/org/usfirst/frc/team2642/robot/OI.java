@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package org.usfirst.frc.team2642.robot;
 
 import org.usfirst.frc.team2642.robot.commands.brake.DeployBrakeCommand;
@@ -12,23 +5,49 @@ import org.usfirst.frc.team2642.robot.commands.brake.ResetBrakeCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.DeployRampCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.LowerRampCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.RaiseRampCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.ResetRampCommand;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	private static Joystick eStop = new Joystick(2);
+	
+	static Button dial1 = new JoystickButton(eStop, 9);
+	static Button dial2 = new JoystickButton(eStop, 10);
+	static Button dial3 = new JoystickButton(eStop, 11);
+	static Button dial4 = new JoystickButton(eStop, 12);
+	static Button dial5 = new JoystickButton(eStop, 13);
+	static Button dial6 = new JoystickButton(eStop, 14);
+	static Button dial7 = new JoystickButton(eStop, 15);
+	static Button dial8 = new JoystickButton(eStop, 16);
+	static Button dial9 = new JoystickButton(eStop, 17);
+
+	
+	public static Joystick geteStop() {
+		return eStop;
+	}
 	
 	public static XboxController xbox = new XboxController(RobotMap.xboxControllerPort);
+	public static XboxController getxBox(){
+		return xbox;
+	}
 	
 	Button xboxA = new JoystickButton(xbox, 1);
-	Button xboxX = new JoystickButton(xbox, 3);
 	Button xboxB = new JoystickButton(xbox, 2);
+	Button xboxX = new JoystickButton(xbox, 3);
+	Button xboxY = new JoystickButton(xbox, 4);
 	/*
 	Left stick = drive 0.6, turn 0.6		Regular Drive
 	Left trigger = drive 1.0, turn 0.6		High Speed Drive
@@ -58,8 +77,12 @@ public class OI {
 		auxXboxY.whenPressed(new ResetBrakeCommand());
 		
 		xboxA.whenPressed(new DeployRampCommand());
+		xboxX.whenPressed(new ResetRampCommand());
 		
-		xboxX.whenPressed(new RaiseRampCommand());
-		
+		xboxB.whenPressed(new RaiseRampCommand());
+		xboxY.whenPressed(new LowerRampCommand());
 	}
+	
+	//Xbox Controller on USB port 0
+	
 }

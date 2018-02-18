@@ -24,7 +24,7 @@ public class RaiseRampCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.ramp.raiseRampCylinder.get() == true) {
+    	if (Robot.ramp.liftRampCylinder.get() == true) {
             return true;
     	}
     	else {
