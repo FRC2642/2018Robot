@@ -6,7 +6,10 @@ import org.usfirst.frc.team2642.robot.commands.drive.DriveCommand;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,6 +30,9 @@ public class DriveTrainSystem extends Subsystem {
 	
 	//DifferentialDrive
 	DifferentialDrive drive = new DifferentialDrive(leftDrive, rightDrive);
+	
+	public AnalogOutput sonarPing = new AnalogOutput(RobotMap.sonarPingPort);
+	public AnalogInput sonarEcho = new AnalogInput(RobotMap.sonarEchoPort);
 	
 	public DriveTrainSystem() {
 		rightDrive.setInverted(false);

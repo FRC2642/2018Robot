@@ -14,11 +14,11 @@ package org.usfirst.frc.team2642.robot;
  * floating around.
  */
 public class RobotMap {
-	//ports for sonar
-	public static int sonarInputPort = 4;
-	public static int sonarOutputPort = 5;
+	//ports for sonar channels
+	public static int sonarPingPort = 2;
+	public static int sonarEchoPort = 3; 
 	
-	//ports for potentiometers
+	//ports for potentiometer channels
 	public static int tiltPotPort = 0;
 	public static int liftPotPort = 1;
 	
@@ -28,7 +28,6 @@ public class RobotMap {
 	public static int brakeCylinderChannel1 = 2;
 	public static int brakeCylinderChannel2 = 3;
 	public static int raiseRampCylinderChannel = 4;
-	//public static int rightRampCylinderChannel2 = 7;
 	
 	//ports for servo motors
 	public static int rampServoMotorPort = 7;
