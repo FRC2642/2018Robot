@@ -51,6 +51,12 @@ public class RobotMap {
 	public static int rightEncoderChannelA = 2;
 	public static int rightEncoderChannelB = 3;
 	
+	//Min and Max values for potentiometers
+	public static double minLift = .5;
+	public static double maxLift = .9;
+	public static double minTilt = .5;
+	public static double maxTilt = .9;
+	
 	//Encoder measurements
 	public static final double PULSES_PER_INCH = 0;
 }
