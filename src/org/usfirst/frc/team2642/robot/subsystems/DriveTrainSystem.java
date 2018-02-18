@@ -30,9 +30,7 @@ public class DriveTrainSystem extends Subsystem {
 	
 	//DifferentialDrive
 	DifferentialDrive drive = new DifferentialDrive(leftDrive, rightDrive);
-	
-	public AnalogOutput sonarPing = new AnalogOutput(RobotMap.sonarPingPort);
-	public AnalogInput sonarEcho = new AnalogInput(RobotMap.sonarEchoPort);
+
 	
 	public DriveTrainSystem() {
 		rightDrive.setInverted(false);
@@ -84,10 +82,6 @@ public class DriveTrainSystem extends Subsystem {
     public double getCurrentHeading() {
     	return gyro.getAngle();
     }
-    
-   /* public double getSonarDistance() {
-    	sonarPing.setVoltage(.5);
-    } */
     
 }
 
