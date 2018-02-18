@@ -1,8 +1,7 @@
-package org.usfirst.frc.team2642.robot.commands.ramp;
+package org.usfirst.frc.team2642.robot.commands;
 
 import org.usfirst.frc.team2642.robot.Robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,6 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ResetRampCommand extends Command {
 
     public ResetRampCommand() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     	requires(Robot.ramp);
     }
 
@@ -20,16 +21,15 @@ public class ResetRampCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ramp.resetRamp();
+    	Robot.ramp.holdRamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.ramp.rampCylinder.get() == Value.kReverse) {
-            return true;
-    	}
-    	else {
-            return false;
+    	if(Robot.ramp.rampServo.getPosition() >= .45) {
+    		return true;
+    	} else {
+    		return false;
     	}
     }
 

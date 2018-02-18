@@ -56,6 +56,7 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		compressor.start();
+		ramp.rampServo.setPosition(.7);
 		//sonar.setAutomaticMode(true);
 	}
 
@@ -119,6 +120,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		ramp.rampServo.setPosition(.7);
 	}
 
 	/**
