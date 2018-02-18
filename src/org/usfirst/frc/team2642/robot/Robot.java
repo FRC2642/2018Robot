@@ -15,14 +15,10 @@ import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
 import org.usfirst.frc.team2642.robot.subsystems.LiftSystem;
 import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.hal.AnalogJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -137,6 +133,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testPeriodic() {
 		SmartDashboard.putNumber("LiftPot", lift.liftPot.get());
+		SmartDashboard.putNumber("LiftPotPID", lift.liftPot.pidGet());
 		SmartDashboard.putNumber("TiltPot", tilt.tiltPot.get());
+		SmartDashboard.putNumber("TiltPotPID", tilt.tiltPot.pidGet());
 	}
 }
