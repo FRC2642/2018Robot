@@ -32,9 +32,5 @@ public class RampSystem extends Subsystem {
     public void raiseRamp() {
     	raiseRampCylinder.set(true);
     }	
-    
-    public void lowerRamp() {
-    	raiseRampCylinder.set(false);
-    }
 }
 

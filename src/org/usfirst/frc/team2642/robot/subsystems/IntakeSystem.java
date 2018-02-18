@@ -25,14 +25,14 @@ public class IntakeSystem extends Subsystem {
     
     //Grabs cube
     public void intakeIn() {
-    	intakeMotor1.set(1);
-    	intakeMotor2.set(1);
+    	intakeMotor1.set(-1);
+    	intakeMotor2.set(-1);
     }
     
     //Ejects cube
     public void intakeOut() {
-    	intakeMotor1.set(-1);
-    	intakeMotor2.set(-1);
+    	intakeMotor1.set(1);
+    	intakeMotor2.set(1);
     }
     
     //Stop motors

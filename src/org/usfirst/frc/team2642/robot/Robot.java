@@ -15,10 +15,14 @@ import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
 import org.usfirst.frc.team2642.robot.subsystems.LiftSystem;
 import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.hal.AnalogJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -43,8 +47,6 @@ public class Robot extends TimedRobot {
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
-	//public static AnalogChannel sonar = new AnalogChannel(RobotMap.sonarInputPort, RobotMap.sonarOutputPort);
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -57,7 +59,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", m_chooser);
 		compressor.start();
 		ramp.rampServo.setPosition(.7);
-		//sonar.setAutomaticMode(true);
 	}
 
 	/**
@@ -120,7 +121,6 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-		ramp.rampServo.setPosition(.7);
 	}
 
 	/**
