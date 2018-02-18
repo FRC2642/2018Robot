@@ -2,7 +2,6 @@ package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
@@ -10,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RampSystem extends Subsystem {
 
-	public Servo rampServo = new Servo(RobotMap.rampServoMotorPort);
+	public Solenoid deployRampCylinder = new Solenoid(RobotMap.deployRampCylinderChannel);
 			
 	public Solenoid raiseRampCylinder = new Solenoid(RobotMap.raiseRampCylinderChannel);
 	
@@ -21,12 +20,8 @@ public class RampSystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-    public void holdRamp() {
-    	rampServo.setPosition(.7);
-    }  
-    
     public void deployRamp() {
-    	rampServo.setPosition(0);
+    	deployRampCylinder.set(true);
     }
  
     public void raiseRamp() {
