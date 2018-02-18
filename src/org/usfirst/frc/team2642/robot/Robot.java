@@ -7,9 +7,22 @@
 
 package org.usfirst.frc.team2642.robot;
 
+import org.usfirst.frc.team2642.robot.subsystems.ClimbBrakeSystem;
+import org.usfirst.frc.team2642.robot.subsystems.ClimbSystem;
+import org.usfirst.frc.team2642.robot.subsystems.DriveTrainSystem;
+import org.usfirst.frc.team2642.robot.subsystems.IntakeSystem;
+import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
+import org.usfirst.frc.team2642.robot.subsystems.LiftSystem;
+import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
+
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogOutput;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.hal.AnalogJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -21,13 +34,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
-	//public static final ExampleSubsystem kExampleSubsystem
-	//		= new ExampleSubsystem();
+	public static final ClimbBrakeSystem brake = new ClimbBrakeSystem();
+	public static final ClimbSystem      climb = new ClimbSystem();
+	public static final DriveTrainSystem drive = new DriveTrainSystem();
+	public static final IntakeSystem     intake = new IntakeSystem();
+	public static final IntakeTiltSystem tilt = new IntakeTiltSystem();
+	public static final LiftSystem       lift = new LiftSystem();
+	public static final RampSystem       ramp = new RampSystem();
+	public static final Compressor compressor = new Compressor();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -35,9 +54,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		//m_chooser.addDefault("Default Auto", new ExampleCommand());
+	//	m_chooser.addDefault("Default Auto", new ());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		compressor.start();
 	}
 
 	/**
@@ -115,5 +135,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		SmartDashboard.putNumber("LiftPot", lift.liftPot.get());
+		SmartDashboard.putNumber("TiltPot", tilt.tiltPot.get());
 	}
 }

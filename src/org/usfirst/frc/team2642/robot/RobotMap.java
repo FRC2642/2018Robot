@@ -14,13 +14,43 @@ package org.usfirst.frc.team2642.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	//ports for sonar channels
+	public static int sonarPingPort = 2;
+	public static int sonarEchoPort = 3; 
+	
+	//ports for potentiometer channels
+	public static int tiltPotPort = 0;
+	public static int liftPotPort = 1;
+	
+	//ports for subsystem pneumatic cylinders
+	public static int climbCylinderChannel = 0;
+	public static int deployRampCylinderChannel = 1;
+	public static int brakeCylinderChannel1 = 2;
+	public static int brakeCylinderChannel2 = 3;
+	public static int raiseRampCylinderChannel = 4;
+	
+	//ports for servo motors
+	public static int rampServoMotorPort = 7;
+	
+	
+	//ports for subsystem motors
+	public static int leftDriveMotorPort = 0;
+	public static int rightDriveMotorPort = 1;
+	public static int liftMotorPort = 3;
+	public static int intakeMotor1Port = 4;
+	public static int intakeMotor2Port = 5;
+	public static int intakeTiltMotorPort = 6;
+	
+	//ports for driver station stuff
+	public static int auxXboxControllerPort = 1;
+	public static int xboxControllerPort = 0;
+	
+	//ports for encoders 
+	public static int leftEncoderChannelA = 0;
+	public static int leftEncoderChannelB = 1;
+	public static int rightEncoderChannelA = 2;
+	public static int rightEncoderChannelB = 3;
+	
+	//Encoder measurements
+	public static final double PULSES_PER_INCH = 0;
 }
