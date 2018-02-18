@@ -24,7 +24,7 @@ public class DeployRampCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.ramp.rampServo.getPosition() <= .1) {
+    	if(Robot.ramp.deployRampCylinder.get()) {
     		return true;
     	} else {
     		return false;

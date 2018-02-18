@@ -84,5 +84,10 @@ public class DriveTrainSystem extends Subsystem {
     public double getCurrentHeading() {
     	return gyro.getAngle();
     }
+    
+   /* public double getSonarDistance() {
+    	sonarPing.setVoltage(.5);
+    } */
+    
 }
 
