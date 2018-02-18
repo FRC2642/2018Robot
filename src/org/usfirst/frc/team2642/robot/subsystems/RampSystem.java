@@ -5,8 +5,6 @@ import org.usfirst.frc.team2642.robot.RobotMap;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  *
  */
@@ -30,10 +28,13 @@ public class RampSystem extends Subsystem {
     public void deployRamp() {
     	rampServo.setPosition(0);
     }
-    
-    public void liftRamp() {
+ 
+    public void raiseRamp() {
     	raiseRampCylinder.set(true);
     }	
     
+    public void lowerRamp() {
+    	raiseRampCylinder.set(false);
+    }
 }
 

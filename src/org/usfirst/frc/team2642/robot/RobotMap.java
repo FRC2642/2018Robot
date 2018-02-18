@@ -33,6 +33,7 @@ public class RobotMap {
 	//ports for servo motors
 	public static int rampServoMotorPort = 7;
 	
+	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
 	public static int rightDriveMotorPort = 1;
