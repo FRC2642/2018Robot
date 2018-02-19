@@ -4,9 +4,7 @@ import org.usfirst.frc.team2642.robot.RobotMap;
 import org.usfirst.frc.team2642.robot.commands.lift.LiftCommand;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
-
 import edu.wpi.first.wpilibj.VictorSP;
-
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -41,7 +39,7 @@ public class LiftSystem extends PIDSubsystem {
 
     //Raises or lowers lift
     public void moveLift(double speed) {
-    	if ((speed < 0) && (liftPot.get() > RobotMap.minLift)) {
+    	/*if ((speed < 0) && (liftPot.get() > RobotMap.minLift)) {
     		liftMotor.set(speed);
     	}
     	else if ((speed > 0) && (liftPot.get() < RobotMap.maxLift)) {
@@ -49,7 +47,8 @@ public class LiftSystem extends PIDSubsystem {
     	}
     	else {
     		stop();
-    	}
+    	}*/
+    	liftMotor.set(speed);
     }
     
     //Off

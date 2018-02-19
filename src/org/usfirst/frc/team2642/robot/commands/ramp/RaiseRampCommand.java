@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.commands.ramp;
 
 import org.usfirst.frc.team2642.robot.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -24,7 +25,7 @@ public class RaiseRampCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.ramp.raiseRampCylinder.get() == true) {
+    	if (Robot.ramp.raiseRampCylinder.get() == Value.kForward) {
             return true;
     	}
     	else {

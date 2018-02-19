@@ -38,7 +38,7 @@ public class IntakeTiltSystem extends PIDSubsystem {
     
     //Tilt the intake
     public void tilt(double speed) {
-    	if ((speed < 0) && (tiltPot.get() > RobotMap.minTilt)) {
+    	/*if ((speed < 0) && (tiltPot.get() > RobotMap.minTilt)) {
     		intakeTiltMotor.set(speed);
     	}
     	else if ((speed > 0) && (tiltPot.get() < RobotMap.maxTilt)) {
@@ -46,7 +46,8 @@ public class IntakeTiltSystem extends PIDSubsystem {
     	}
     	else {
     		stop();
-    	}
+    	}*/
+    	intakeTiltMotor.set(speed);
     }
 
     //Off
