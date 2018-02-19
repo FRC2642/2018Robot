@@ -25,26 +25,31 @@ public class IntakeTiltSystem extends PIDSubsystem {
     }
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
         setDefaultCommand(new TiltIntakeCommand());
     }
 
     protected double returnPIDInput() {
-        // Return your input value for the PID loop
-        // e.g. a sensor, like a potentiometer:
-        // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return 0.0;
+        return tiltPot.pidGet();
     }
 
     protected void usePIDOutput(double output) {
-        // Use output to drive your system, like a motor
-        // e.g. yourMotor.set(output);
-    }    
-    //Tilt the intake 
-    public void tilt(double speed) {
-    	intakeTiltMotor.set(speed);
+    	tilt(output);
     }
     
+    //Tilt the intake
+    public void tilt(double speed) {
+    	/*if ((speed < 0) && (tiltPot.get() > RobotMap.minTilt)) {
+    		intakeTiltMotor.set(speed);
+    	}
+    	else if ((speed > 0) && (tiltPot.get() < RobotMap.maxTilt)) {
+    		intakeTiltMotor.set(speed);
+    	}
+    	else {
+    		stop();
+    	}*/
+    	intakeTiltMotor.set(speed);
+    }
+
     //Off
     public void stop() {
     	intakeTiltMotor.set(0.0);

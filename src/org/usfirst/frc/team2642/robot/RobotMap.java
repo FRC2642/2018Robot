@@ -15,19 +15,21 @@ package org.usfirst.frc.team2642.robot;
  */
 public class RobotMap {
 	//ports for sonar channels
-	//public static int sonarPingPort = 2;
-	//public static int sonarEchoPort = 2; 
+	public static int sonarPingPort = 0;
+	public static int sonarEchoPort = 1; 
+
 	
 	//ports for potentiometer channels
-	public static int tiltPotPort = 0;
-	public static int liftPotPort = 1;
+	public static int tiltPotPort = 3;
+	public static int liftPotPort = 4;
 	
 	//ports for subsystem pneumatic cylinders
 	public static int climbCylinderChannel = 0;
 	public static int deployRampCylinderChannel = 1;
-	public static int brakeCylinderChannel1 = 2;
-	public static int brakeCylinderChannel2 = 3;
-	public static int raiseRampCylinderChannel = 4;
+	public static int brakeCylinderChannel1 = 3;
+	public static int brakeCylinderChannel2 = 2;
+	public static int raiseRampCylinderChannel1 = 4;
+	public static int raiseRampCylinderChannel2 = 5;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
@@ -46,6 +48,12 @@ public class RobotMap {
 	public static int leftEncoderChannelB = 1;
 	public static int rightEncoderChannelA = 2;
 	public static int rightEncoderChannelB = 3;
+	
+	//Min and Max values for potentiometers
+	public static double minLift = .5;
+	public static double maxLift = .9;
+	public static double minTilt = .5;
+	public static double maxTilt = .9;
 	
 	//Encoder measurements
 	public static final double PULSES_PER_INCH = 0;

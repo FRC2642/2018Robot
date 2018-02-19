@@ -1,17 +1,16 @@
-package org.usfirst.frc.team2642.robot.commands.brake;
+package org.usfirst.frc.team2642.robot.commands.ramp;
 
 import org.usfirst.frc.team2642.robot.Robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ResetBrakeCommand extends Command {
+public class ResetRampCommand extends Command {
 
-    public ResetBrakeCommand() {
-    	requires(Robot.brake);
+    public ResetRampCommand() {
+    	requires(Robot.ramp);
     }
 
     // Called just before this Command runs the first time
@@ -20,17 +19,12 @@ public class ResetBrakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.brake.resetBrake();
+    	Robot.ramp.resetRamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.brake.brakeCylinder.get() == Value.kReverse) {
-            return true;
-    	}
-    	else {
-            return false;
-    	}
+    	return !(Robot.ramp.deployRampCylinder.get());
     }
 
     // Called once after isFinished returns true

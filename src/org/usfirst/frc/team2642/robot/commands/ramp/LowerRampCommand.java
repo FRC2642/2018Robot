@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2642.robot.commands.brake;
+package org.usfirst.frc.team2642.robot.commands.ramp;
 
 import org.usfirst.frc.team2642.robot.Robot;
 
@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ResetBrakeCommand extends Command {
+public class LowerRampCommand extends Command {
 
-    public ResetBrakeCommand() {
-    	requires(Robot.brake);
+    public LowerRampCommand() {
+    	requires(Robot.ramp);
     }
 
     // Called just before this Command runs the first time
@@ -20,12 +20,12 @@ public class ResetBrakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.brake.resetBrake();
+    	Robot.ramp.lowerRamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.brake.brakeCylinder.get() == Value.kReverse) {
+    	if (Robot.ramp.raiseRampCylinder.get() == Value.kReverse) {
             return true;
     	}
     	else {

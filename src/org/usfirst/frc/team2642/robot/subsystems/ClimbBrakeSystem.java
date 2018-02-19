@@ -14,7 +14,10 @@ public class ClimbBrakeSystem extends Subsystem {
 	public DoubleSolenoid brakeCylinder = new DoubleSolenoid(RobotMap.brakeCylinderChannel1, RobotMap.brakeCylinderChannel2);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+	
+	public ClimbBrakeSystem() {
+		brakeCylinder.set(Value.kReverse);
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
