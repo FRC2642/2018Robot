@@ -13,11 +13,11 @@ public class RampSystem extends Subsystem {
 
 	public Solenoid deployRampCylinder = new Solenoid(RobotMap.deployRampCylinderChannel);
 			
-	public DoubleSolenoid raiseRampCylinder = new DoubleSolenoid(RobotMap.raiseRampCylinderChannel1, RobotMap.raiseRampCylinderChannel2);
+	//public DoubleSolenoid raiseRampCylinder = new DoubleSolenoid(RobotMap.raiseRampCylinderChannel1, RobotMap.raiseRampCylinderChannel2);
 	
 	public RampSystem() {
 		deployRampCylinder.set(false);
-		raiseRampCylinder.set(Value.kReverse);
+		//raiseRampCylinder.set(Value.kReverse);
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -33,11 +33,11 @@ public class RampSystem extends Subsystem {
     }
  
     public void raiseRamp() {
-    	raiseRampCylinder.set(Value.kForward);
+    	//raiseRampCylinder.set(Value.kForward);
     }
     
     public void lowerRamp() {
-    	raiseRampCylinder.set(Value.kReverse);
+    	//raiseRampCylinder.set(Value.kReverse);
     }	
 }
 

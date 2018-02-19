@@ -23,9 +23,11 @@ public class IntakeCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (isLeftTriggerPulled()) {
+    		Robot.intake.closeIntake();
     		Robot.intake.intakeIn();
     	}
     	else if (isRightTriggerPulled()) {
+    		Robot.intake.openIntake();
     		Robot.intake.intakeOut();
     	}
     	else {

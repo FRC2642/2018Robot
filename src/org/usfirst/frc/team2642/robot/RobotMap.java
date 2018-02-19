@@ -28,8 +28,8 @@ public class RobotMap {
 	public static int deployRampCylinderChannel = 1;
 	public static int brakeCylinderChannel1 = 3;
 	public static int brakeCylinderChannel2 = 2;
-	public static int raiseRampCylinderChannel1 = 4;
-	public static int raiseRampCylinderChannel2 = 5;
+	public static int intakeCylinderChannel1 = 4;
+	public static int intakeCylinderChannel2 = 5;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
