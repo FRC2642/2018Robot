@@ -17,6 +17,7 @@ public class RobotMap {
 	//ports for sonar channels
 	public static int sonarPingPort = 0;
 	public static int sonarEchoPort = 1; 
+
 	
 	//ports for potentiometer channels
 	public static int tiltPotPort = 3;
@@ -27,12 +28,8 @@ public class RobotMap {
 	public static int deployRampCylinderChannel = 1;
 	public static int brakeCylinderChannel1 = 3;
 	public static int brakeCylinderChannel2 = 2;
-	public static int raiseRampCylinderChannel1 = 4;
-	public static int raiseRampCylinderChannel2 = 5;
-	
-	//ports for servo motors
-	public static int rampServoMotorPort = 7;
-	
+	public static int intakeCylinderChannel1 = 4;
+	public static int intakeCylinderChannel2 = 5;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;

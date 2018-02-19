@@ -25,12 +25,12 @@ public class LowerRampCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.ramp.raiseRampCylinder.get() == Value.kReverse) {
+    /*	if (Robot.ramp.raiseRampCylinder.get() == Value.kReverse) {
             return true;
     	}
-    	else {
+    	else {*/
             return false;
-    	}
+    //	}
     }
 
     // Called once after isFinished returns true
