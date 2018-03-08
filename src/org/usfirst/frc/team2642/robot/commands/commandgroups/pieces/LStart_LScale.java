@@ -18,5 +18,7 @@ public class LStart_LScale extends CommandGroup {
     	addSequential(new DriveByGyro(0, .8, 20, false));
     	addSequential(new TurnByGyro(0, 2));
     	//addSequential(new PlaceHolderCommand(.5));
+    	addSequential(new DriveByGyro(0, -.8, 5, false));
+    	addSequential(new DriveByGyro(0, -.8, 5, false));
     }
 }

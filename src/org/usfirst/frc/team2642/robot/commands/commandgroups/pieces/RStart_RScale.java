@@ -13,7 +13,7 @@ public class RStart_RScale extends CommandGroup {
     public RStart_RScale() {
     	addSequential(new DriveByGyro(0, .9, 96, false));
     	addSequential(new DriveByGyro(0, .9, 74, false));
-    	addSequential(new DriveByGyro(-40, .8, 56, false));
+    	addSequential(new DriveByGyro(-42, .8, 56, false));
     	addSequential(new DriveByGyro(-10, .7, 24, false));
     	addSequential(new DriveByGyro(0, .7, 8, false));
     	addSequential(new TurnByGyro(0, 2));

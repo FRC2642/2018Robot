@@ -16,11 +16,12 @@ public class LSwitchToRScale extends CommandGroup {
     	addSequential(new TurnByGyro(137, 2));
     	addSequential(new DriveByGyro(137, .8, 14, false));
     	//addSequential(new PlaceHolderCommand(.5));
+    	addSequential(new DriveByGyro(137, -.8, 10, false));
     	addSequential(new DriveByGyro(120, -.8, 5, false));
     	addSequential(new DriveByGyro(110, -.8, 5, false));
     	addSequential(new DriveByGyro(100, -.8, 5, false));
     	addSequential(new TurnByGyro(90, 2));
-    	addSequential(new DriveByGyro(90, .8, 66, false));
+    	addSequential(new DriveByGyro(90, .8, 82, false));
     	addSequential(new DriveByGyro(90, .6, 48, false));
     	addSequential(new DriveByGyro(90, .8, 42, false));
     	addSequential(new TurnByGyro(0, 2));

@@ -17,11 +17,11 @@ public class CStart_LSwitchBasic extends CommandGroup {
     	addSequential(new DriveByGyro(-50, .7, 66, false));
     	addSequential(new DriveByGyro(0, .6, 36, false));
     	addSequential(new TurnByGyro(0, 2));
-    	//addSequential(new PlaceHolderCommand(.5));
+    	addSequential(new WaitCommand(.5));
     	addSequential(new DriveByGyro(0, -.7, 54, false));
     	addSequential(new TurnByGyro(50, 2));
     	addSequential(new DriveByGyro(50, .7, 42, false));
-    	//addSequential(new PlaceHolderCommand(.5));
+    	addSequential(new WaitCommand(.5));
     	addSequential(new DriveByGyro(90, -.7, 25, false));
     	addSequential(new TurnByGyro(180, 2));
     	addSequential(new DriveByGyro(180, .7, 24, false));

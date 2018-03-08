@@ -23,5 +23,7 @@ public class RStart_LScale extends CommandGroup {
     	addSequential(new TurnByGyro(0, 2));
     	addSequential(new DriveByGyro(0, .8, 24, false));
     	//addSequential(new PlaceHolderCommand(.8));
+    	addSequential(new DriveByGyro(0, -.8, 8, false));
+    	addSequential(new DriveByGyro(0, -.8, 8, false));
     }
 }

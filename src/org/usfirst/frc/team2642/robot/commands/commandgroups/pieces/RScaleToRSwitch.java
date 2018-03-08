@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RScaleToRSwitch extends CommandGroup {
 
     public RScaleToRSwitch() {
-    	addSequential(new DriveByGyro(0, -.8, 6, false));
-    	addSequential(new DriveByGyro(0, -.8, 6, false));
-    	//addSequential(new PlaceHolderCommand(1.5));
-    	addSequential(new TurnByGyro(-170, 2));
-    	addSequential(new DriveByGyro(-170, .8, 19, false));
+    	addSequential(new TurnByGyro(-161, 2));
+    	addSequential(new DriveByGyro(-163, .8, 18, false));
+    	addSequential(new DriveByGyro(-163, -.8, 18, false));
+    	addSequential(new TurnByGyro(-140, 2));
+    	addSequential(new DriveByGyro(-140, .8, 19, false));
     }
 }
