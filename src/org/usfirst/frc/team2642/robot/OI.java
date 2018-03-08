@@ -29,8 +29,8 @@ public class OI {
 	
 	public static XboxController xbox = new XboxController(RobotMap.xboxControllerPort);
 	
-	Button xboxA = new JoystickButton(xbox, 1);
-	Button xboxB = new JoystickButton(xbox, 2);
+	public Button xboxA = new JoystickButton(xbox, 1);
+	public Button xboxB = new JoystickButton(xbox, 2);
 	Button xboxX = new JoystickButton(xbox, 3);
 	Button xboxY = new JoystickButton(xbox, 4);
 	
@@ -75,8 +75,8 @@ public class OI {
 		auxXboxB.whenPressed(new DeployBrakeCommand());
 		auxXboxY.whenPressed(new ResetBrakeCommand());
 		
-		xboxA.whenPressed(new DeployRampCommand());
-		xboxB.whenPressed(new ResetRampCommand());
+		//xboxA.whenPressed(new IntakeCommand());
+		//xboxB.whenPressed(new ResetRampCommand());
 		
 		xboxX.whenPressed(new RaiseRampCommand());
 		xboxY.whenPressed(new LowerRampCommand());

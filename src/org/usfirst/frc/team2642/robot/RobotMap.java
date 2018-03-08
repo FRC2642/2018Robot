@@ -15,10 +15,16 @@ package org.usfirst.frc.team2642.robot;
  */
 public class RobotMap {
 
+	//pixycam ports
+	public static int pixyAnalogPort = 1;
+	public static int pixyDigitalPort = 4;
+	
+	//sonar ports
+	public static int sonarPort = 0;
 	
 	//ports for potentiometer channels
 	public static int tiltPotPort = 3;
-	public static int liftPotPort = 4;
+	public static int liftPotPort = 2;
 	
 	//ports for subsystem pneumatic cylinders
 	public static int climbCylinderChannel = 0;
@@ -36,9 +42,9 @@ public class RobotMap {
 	public static int intakeTiltMotorPort = 6;
 	
 	//ports for driver station stuff
-	public static int auxXboxControllerPort = 1;
-	public static int xboxControllerPort = 0;
-	public static int autoDialPort = 2;
+	public static int auxXboxControllerPort = 2;
+	public static int xboxControllerPort = 1;
+	public static int autoDialPort = 0;
 	
 	//ports for encoders 
 	public static int leftEncoderChannelA = 0;
@@ -49,11 +55,11 @@ public class RobotMap {
 	//Min and Max values for potentiometers
 	public static double minLift = .5;
 	public static double maxLift = .9;
-	public static double minTilt = .5;
-	public static double maxTilt = .9;
+	public static double minTilt = .53;
+	public static double maxTilt = .8;
 	
 	//Encoder measurements
-	public static final double PULSES_PER_INCH = 0;
+	public static final double PULSES_PER_INCH = 200;
 	
 	public static final String logDirectory = "/home/lvuser/";
 	public static final String logFileName = "log.txt";

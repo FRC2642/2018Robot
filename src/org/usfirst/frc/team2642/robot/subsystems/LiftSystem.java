@@ -39,16 +39,15 @@ public class LiftSystem extends PIDSubsystem {
 
     //Raises or lowers lift
     public void moveLift(double speed) {
-    	/*if ((speed < 0) && (liftPot.get() > RobotMap.minLift)) {
+    	if ((speed > 0) && (liftPot.get() > RobotMap.minLift)) {
     		liftMotor.set(speed);
     	}
-    	else if ((speed > 0) && (liftPot.get() < RobotMap.maxLift)) {
+    	else if ((speed < 0) && (liftPot.get() < RobotMap.maxLift)) {
     		liftMotor.set(speed);
     	}
     	else {
     		stop();
-    	}*/
-    	liftMotor.set(speed);
+    	}
     }
     
     //Off
