@@ -14,9 +14,6 @@ package org.usfirst.frc.team2642.robot;
  * floating around.
  */
 public class RobotMap {
-	//ports for sonar channels
-	public static int sonarPingPort = 0;
-	public static int sonarEchoPort = 1; 
 
 	
 	//ports for potentiometer channels
@@ -28,8 +25,7 @@ public class RobotMap {
 	public static int deployRampCylinderChannel = 1;
 	public static int brakeCylinderChannel1 = 3;
 	public static int brakeCylinderChannel2 = 2;
-	public static int intakeCylinderChannel1 = 4;
-	public static int intakeCylinderChannel2 = 5;
+	public static int intakeCylinderChannel = 4;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
@@ -42,6 +38,7 @@ public class RobotMap {
 	//ports for driver station stuff
 	public static int auxXboxControllerPort = 1;
 	public static int xboxControllerPort = 0;
+	public static int autoDialPort = 2;
 	
 	//ports for encoders 
 	public static int leftEncoderChannelA = 0;
@@ -57,4 +54,7 @@ public class RobotMap {
 	
 	//Encoder measurements
 	public static final double PULSES_PER_INCH = 0;
+	
+	public static final String logDirectory = "/home/lvuser/";
+	public static final String logFileName = "log.txt";
 }
