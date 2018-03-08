@@ -55,11 +55,11 @@ public class RobotMap {
 	//Min and Max values for potentiometers
 	public static double minLift = .5;
 	public static double maxLift = .9;
-	public static double minTilt = .5;
-	public static double maxTilt = .9;
+	public static double minTilt = .53;
+	public static double maxTilt = .8;
 	
 	//Encoder measurements
-	public static final double PULSES_PER_INCH = 0;
+	public static final double PULSES_PER_INCH = 200;
 	
 	public static final String logDirectory = "/home/lvuser/";
 	public static final String logFileName = "log.txt";
