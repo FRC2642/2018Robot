@@ -50,6 +50,10 @@ public class IntakeTiltSystem extends PIDSubsystem {
     	intakeTiltMotor.set(speed);
     }
 
+    public void lowerTilt() {
+    //	intakeTiltMotor.se
+    }
+    
     //Off
     public void stop() {
     	intakeTiltMotor.set(0.0);

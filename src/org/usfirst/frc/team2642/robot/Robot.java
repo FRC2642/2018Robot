@@ -5,6 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+
 package org.usfirst.frc.team2642.robot;
 
 import org.usfirst.frc.team2642.robot.subsystems.ClimbBrakeSystem;
@@ -13,7 +14,11 @@ import org.usfirst.frc.team2642.robot.subsystems.DriveTrainSystem;
 import org.usfirst.frc.team2642.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team2642.robot.subsystems.IntakeTiltSystem;
 import org.usfirst.frc.team2642.robot.subsystems.LiftSystem;
+import org.usfirst.frc.team2642.robot.subsystems.PixySubsystem;
 import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
+import org.usfirst.frc.team2642.robot.subsystems.SonarSubsystem;
+import org.usfirst.frc.team2642.robot.utilities.AutoSelector;
+import org.usfirst.frc.team2642.robot.utilities.RoboRioLogger;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -38,11 +43,14 @@ public class Robot extends TimedRobot {
 	public static final LiftSystem       lift = new LiftSystem();
 	public static final RampSystem       ramp = new RampSystem();
 	public static final Compressor compressor = new Compressor();
+	public static PixySubsystem pixy = new PixySubsystem();
+	public static SonarSubsystem sonar = new SonarSubsystem();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
+	public static final RoboRioLogger logger = new RoboRioLogger();
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -84,14 +92,13 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+		//m_autonomousCommand = m_chooser.getSelected();
+		intake.closeIntake();
+		tilt.lowerTilt();
+		
+		AutoSelector a = new AutoSelector();
+		a.selectAuto();
+		m_autonomousCommand = a.autoCommand;
 
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {

@@ -49,6 +49,11 @@ public class DriveTrainSystem extends Subsystem {
     	drive.tankDrive(leftMoveValue, rightMoveValue);
     }
     
+    public void brake() {
+    	leftDrive.stopMotor();
+    	rightDrive.stopMotor();
+    }
+    
     public void stop() {
     	drive.arcadeDrive(0.0, 0.0);
     }
