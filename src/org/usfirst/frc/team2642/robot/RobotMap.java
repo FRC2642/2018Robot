@@ -15,10 +15,16 @@ package org.usfirst.frc.team2642.robot;
  */
 public class RobotMap {
 
+	//pixycam ports
+	public static int pixyAnalogPort = 1;
+	public static int pixyDigitalPort = 4;
+	
+	//sonar ports
+	public static int sonarPort = 0;
 	
 	//ports for potentiometer channels
 	public static int tiltPotPort = 3;
-	public static int liftPotPort = 4;
+	public static int liftPotPort = 2;
 	
 	//ports for subsystem pneumatic cylinders
 	public static int climbCylinderChannel = 0;
@@ -36,9 +42,9 @@ public class RobotMap {
 	public static int intakeTiltMotorPort = 6;
 	
 	//ports for driver station stuff
-	public static int auxXboxControllerPort = 1;
-	public static int xboxControllerPort = 0;
-	public static int autoDialPort = 2;
+	public static int auxXboxControllerPort = 2;
+	public static int xboxControllerPort = 1;
+	public static int autoDialPort = 0;
 	
 	//ports for encoders 
 	public static int leftEncoderChannelA = 0;
