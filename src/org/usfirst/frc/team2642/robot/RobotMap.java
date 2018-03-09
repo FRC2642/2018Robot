@@ -61,6 +61,15 @@ public class RobotMap {
 	//Encoder measurements
 	public static final double PULSES_PER_INCH = 200;
 	
+	//logger destination
 	public static final String logDirectory = "/home/lvuser/";
 	public static final String logFileName = "log.txt";
+	
+	//Pot height and tilt
+	public static final double switchHeight = 0.66;
+	public static final double switchTilt = 0.65;
+	public static final double scaleHeight = 0.9;
+	public static final double scaleTilt = 0.7;
+	public static final double cubeHeight = 0.5;
+	public static final double cubeTilt = 0.65;
 }
