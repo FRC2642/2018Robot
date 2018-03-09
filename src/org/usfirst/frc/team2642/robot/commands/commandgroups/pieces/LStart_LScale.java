@@ -5,6 +5,7 @@ import org.usfirst.frc.team2642.robot.commands.drive.DriveByGyro;
 import org.usfirst.frc.team2642.robot.commands.drive.TurnByGyro;
 import org.usfirst.frc.team2642.robot.commands.intake.AutoIntake;
 import org.usfirst.frc.team2642.robot.commands.lift.AutoLiftCommand;
+import org.usfirst.frc.team2642.robot.commands.misc.StartAutoCommand;
 import org.usfirst.frc.team2642.robot.commands.tilt.AutoTiltIntake;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LStart_LScale extends CommandGroup {
 
     public LStart_LScale() {
+    	addSequential(new StartAutoCommand());
     	addSequential(new DriveByGyro(0, .9, 163, false));
     	addSequential(new DriveByGyro(34, .8, 59, false));
     	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));
