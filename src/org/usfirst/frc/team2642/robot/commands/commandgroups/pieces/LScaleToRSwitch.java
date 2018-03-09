@@ -18,10 +18,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LScaleToRSwitch extends CommandGroup {
 
     public LScaleToRSwitch() {
-    	addSequential(new TurnByGyro(0, 2));
-    	addSequential(new DriveByGyro(0, .8, 55, false));
-    	addParallel(new AutoLiftCommand(RobotMap.cubeHeight));
-    	addParallel(new AutoTiltIntake(RobotMap.cubeTilt));
     	addSequential(new TurnByGyro(137, 2));
     	addSequential(new FindCubeCommand(.5, true));
     	addSequential(new DriveByVector(.5, 24));

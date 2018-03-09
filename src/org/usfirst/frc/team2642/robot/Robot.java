@@ -58,7 +58,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-	//	m_chooser.addDefault("Default Auto", new ());
+		//m_chooser.addDefault("Default Auto", new DriveByVector(.5, 24));
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		compressor.start();
@@ -129,6 +129,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Sonar", sonar.getDistance());
+		SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
 	}
 
 	/**

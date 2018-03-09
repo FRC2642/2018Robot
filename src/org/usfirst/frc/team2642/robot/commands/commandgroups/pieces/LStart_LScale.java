@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LStart_LScale extends CommandGroup {
 
     public LStart_LScale() {
-    	addSequential(new StartAutoCommand());
+    	//addSequential(new StartAutoCommand());
     	addSequential(new DriveByGyro(0, .9, 163, false));
     	addSequential(new DriveByGyro(34, .8, 59, false));
     	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));

@@ -37,7 +37,7 @@ public class DriveByVector extends Command {
     protected void execute() {
     	double currentPulses;
     	double currentHeading = Robot.pixy.getCubeCenter();
-    	double headingCorrection = pixyCorrection.calculateCorrection(140, currentHeading);
+    	double headingCorrection = pixyCorrection.calculateCorrection(160, currentHeading);
     	double currentDistance = Robot.sonar.getDistance();
     	double powerCorrection = sonarCorrection.calculateCorrection(distance, currentDistance);
     	if (headingCorrection > .25) {
@@ -47,11 +47,11 @@ public class DriveByVector extends Command {
     		powerCorrection = .25;
     	}
     	double power = basePower + powerCorrection;
-    	if (Robot.pixy.getCubeCenter() < 150) {
+    	if (Robot.pixy.getCubeCenter() < 170) {
     		leftPower = (power - headingCorrection);
     		rightPower = (power + headingCorrection);
     	}
-    	else if (Robot.pixy.getCubeCenter() > 130) {
+    	else if (Robot.pixy.getCubeCenter() > 150) {
     		leftPower = (power + headingCorrection);
     		rightPower = (power - headingCorrection);
     	}
