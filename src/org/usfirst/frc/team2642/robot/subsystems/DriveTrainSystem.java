@@ -31,7 +31,6 @@ public class DriveTrainSystem extends Subsystem {
 	//DifferentialDrive
 	DifferentialDrive drive = new DifferentialDrive(leftDrive, rightDrive);
 
-	
 	public DriveTrainSystem() {
 		rightDrive.setInverted(false);
 		leftDrive.setInverted(false);
@@ -48,6 +47,11 @@ public class DriveTrainSystem extends Subsystem {
     
     public void tankMove(double leftMoveValue, double rightMoveValue) {
     	drive.tankDrive(leftMoveValue, rightMoveValue);
+    }
+    
+    public void brake() {
+    	leftDrive.stopMotor();
+    	rightDrive.stopMotor();
     }
     
     public void stop() {
@@ -82,6 +86,5 @@ public class DriveTrainSystem extends Subsystem {
     public double getCurrentHeading() {
     	return gyro.getAngle();
     }
-    
 }
 

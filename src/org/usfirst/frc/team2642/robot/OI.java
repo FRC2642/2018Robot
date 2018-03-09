@@ -12,8 +12,11 @@ import org.usfirst.frc.team2642.robot.commands.brake.ResetBrakeCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.DeployRampCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.LowerRampCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.RaiseRampCommand;
+import org.usfirst.frc.team2642.robot.commands.ramp.ResetRampCommand;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -26,9 +29,11 @@ public class OI {
 	
 	public static XboxController xbox = new XboxController(RobotMap.xboxControllerPort);
 	
-	Button xboxA = new JoystickButton(xbox, 1);
+	public Button xboxA = new JoystickButton(xbox, 1);
+	public Button xboxB = new JoystickButton(xbox, 2);
 	Button xboxX = new JoystickButton(xbox, 3);
-	Button xboxB = new JoystickButton(xbox, 2);
+	Button xboxY = new JoystickButton(xbox, 4);
+	
 	/*
 	Left stick = drive 0.6, turn 0.6		Regular Drive
 	Left trigger = drive 1.0, turn 0.6		High Speed Drive
@@ -49,6 +54,19 @@ public class OI {
 	Left trigger = intake in
 	Right trigger = intake out (eject)
 	*/
+	
+	public static Joystick autoDial = new Joystick(RobotMap.autoDialPort);
+	
+	//left dial
+	public static Button dial1 = new JoystickButton(autoDial, 1);
+	public static Button dial2 = new JoystickButton(autoDial, 2);
+	public static Button dial3 = new JoystickButton(autoDial, 3);
+	
+	//right dial
+	public static Button dial4 = new JoystickButton(autoDial, 4);
+	public static Button dial5 = new JoystickButton(autoDial, 5);
+	public static Button dial6 = new JoystickButton(autoDial, 6);
+	
 	public OI() {
 
 		auxXboxA.whenPressed(new DeployHookCommand()); 
@@ -57,9 +75,10 @@ public class OI {
 		auxXboxB.whenPressed(new DeployBrakeCommand());
 		auxXboxY.whenPressed(new ResetBrakeCommand());
 		
-		xboxA.whenPressed(new DeployRampCommand());
+		//xboxA.whenPressed(new IntakeCommand());
+		//xboxB.whenPressed(new ResetRampCommand());
 		
 		xboxX.whenPressed(new RaiseRampCommand());
-		
+		xboxY.whenPressed(new LowerRampCommand());
 	}
 }

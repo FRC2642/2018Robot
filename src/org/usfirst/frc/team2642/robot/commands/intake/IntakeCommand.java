@@ -31,6 +31,12 @@ public class IntakeCommand extends Command {
     	else {
     		Robot.intake.stop();
     	}
+    	if (OI.xbox.getAButtonPressed()) {
+    		Robot.intake.closeIntake();
+    	}
+    	else if (OI.xbox.getBButtonPressed()) {
+    		Robot.intake.openIntake();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

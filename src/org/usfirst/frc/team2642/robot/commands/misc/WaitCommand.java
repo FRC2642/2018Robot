@@ -1,35 +1,34 @@
-package org.usfirst.frc.team2642.robot.commands.brake;
+package org.usfirst.frc.team2642.robot.commands.misc;
 
-import org.usfirst.frc.team2642.robot.Robot;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ResetBrakeCommand extends Command {
-
-    public ResetBrakeCommand() {
-    	requires(Robot.brake);
+public class WaitCommand extends Command {
+	Timer timer = new Timer();
+	double t = 0.0;
+    public WaitCommand(double seconds) {
+        this.t = seconds;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.brake.resetBrake();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.brake.brakeCylinder.get() == Value.kReverse) {
-            return true;
+    	if (timer.get() > t) {
+    		return true;
     	}
     	else {
-            return false;
+    		return false;
     	}
     }
 

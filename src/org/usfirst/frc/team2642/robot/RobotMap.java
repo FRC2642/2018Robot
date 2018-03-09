@@ -14,24 +14,24 @@ package org.usfirst.frc.team2642.robot;
  * floating around.
  */
 public class RobotMap {
-	//ports for sonar channels
-	public static int sonarPingPort = 2;
-	public static int sonarEchoPort = 3; 
+
+	//pixycam ports
+	public static int pixyAnalogPort = 1;
+	public static int pixyDigitalPort = 4;
+	
+	//sonar ports
+	public static int sonarPort = 0;
 	
 	//ports for potentiometer channels
-	public static int tiltPotPort = 0;
-	public static int liftPotPort = 1;
+	public static int tiltPotPort = 3;
+	public static int liftPotPort = 2;
 	
 	//ports for subsystem pneumatic cylinders
 	public static int climbCylinderChannel = 0;
 	public static int deployRampCylinderChannel = 1;
-	public static int brakeCylinderChannel1 = 2;
-	public static int brakeCylinderChannel2 = 3;
-	public static int raiseRampCylinderChannel = 4;
-	
-	//ports for servo motors
-	public static int rampServoMotorPort = 7;
-	
+	public static int brakeCylinderChannel1 = 3;
+	public static int brakeCylinderChannel2 = 2;
+	public static int intakeCylinderChannel = 4;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
@@ -42,8 +42,9 @@ public class RobotMap {
 	public static int intakeTiltMotorPort = 6;
 	
 	//ports for driver station stuff
-	public static int auxXboxControllerPort = 1;
-	public static int xboxControllerPort = 0;
+	public static int auxXboxControllerPort = 2;
+	public static int xboxControllerPort = 1;
+	public static int autoDialPort = 0;
 	
 	//ports for encoders 
 	public static int leftEncoderChannelA = 0;
@@ -51,6 +52,24 @@ public class RobotMap {
 	public static int rightEncoderChannelA = 2;
 	public static int rightEncoderChannelB = 3;
 	
+	//Min and Max values for potentiometers
+	public static double minLift = .5;
+	public static double maxLift = .9;
+	public static double minTilt = .53;
+	public static double maxTilt = .8;
+	
 	//Encoder measurements
-	public static final double PULSES_PER_INCH = 0;
+	public static final double PULSES_PER_INCH = 200;
+	
+	//logger destination
+	public static final String logDirectory = "/home/lvuser/";
+	public static final String logFileName = "log.txt";
+	
+	//Pot height and tilt
+	public static final double switchHeight = 0.66;
+	public static final double switchTilt = 0.65;
+	public static final double scaleHeight = 0.9;
+	public static final double scaleTilt = 0.7;
+	public static final double cubeHeight = 0.5;
+	public static final double cubeTilt = 0.65;
 }
