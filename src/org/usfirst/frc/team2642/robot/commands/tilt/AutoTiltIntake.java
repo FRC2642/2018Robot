@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2642.robot.commands.lift;
+package org.usfirst.frc.team2642.robot.commands.tilt;
 
 import org.usfirst.frc.team2642.robot.Robot;
 import org.usfirst.frc.team2642.robot.utilities.PIDCorrection;
@@ -8,15 +8,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoLiftCommand extends Command {
-	PIDCorrection liftPID = new PIDCorrection(2.5);
-	double target;
+public class AutoTiltIntake extends Command {
+	PIDCorrection tiltPID = new PIDCorrection(3.7037);
+	double targetTilt;
+	double currentTilt;
 	double basePower = .7;
-	double currentHeight;
 	
-    public AutoLiftCommand(double target) {
-    	requires(Robot.lift);
-    	this.target = target;
+    public AutoTiltIntake(double tilt) {
+        requires(Robot.tilt);
+        this.targetTilt = tilt;
     }
 
     // Called just before this Command runs the first time
@@ -25,18 +25,17 @@ public class AutoLiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	currentHeight = Robot.lift.liftPot.get();
-    	double correction = liftPID.calculateCorrection(target, currentHeight);
+    	currentTilt = Robot.tilt.tiltPot.get();
+    	double correction = tiltPID.calculateCorrection(targetTilt, currentTilt);
     	double power = basePower + correction;
-    	if (currentHeight > target) {
+    	if (currentTilt > targetTilt) {
     		power = (-power);
     	}
-    	Robot.lift.moveLift(power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return ((currentHeight <= (target + .025)) && (currentHeight >= (target + .025)));
+        return ((currentTilt < (targetTilt + .04)) && (currentTilt > (targetTilt - .04)));
     }
 
     // Called once after isFinished returns true
