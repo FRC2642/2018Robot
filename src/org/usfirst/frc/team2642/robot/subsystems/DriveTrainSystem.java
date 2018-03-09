@@ -42,10 +42,9 @@ public class DriveTrainSystem extends Subsystem {
     	setDefaultCommand(new DriveCommand());
     }
     
-    public void invertMotor() {
-    	if (rightDrive.getInverted()) {
-    		
-    	}
+    public void invertMotor(boolean isInverted) {
+		rightDrive.setInverted(isInverted);
+		leftDrive.setInverted(isInverted);
     }
     
     public void move(double moveValue, double rotateValue) {
