@@ -35,10 +35,17 @@ public class DriveTrainSystem extends Subsystem {
 		rightDrive.setInverted(false);
 		leftDrive.setInverted(false);
 	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveCommand());
+    }
+    
+    public void invertMotor() {
+    	if (rightDrive.getInverted()) {
+    		
+    	}
     }
     
     public void move(double moveValue, double rotateValue) {

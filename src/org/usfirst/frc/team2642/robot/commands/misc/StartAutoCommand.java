@@ -36,7 +36,7 @@ public class StartAutoCommand extends Command {
     	double correction = tiltPID.calculateCorrection(targetTilt, currentTilt);
     	double power = basePower + correction;
     	if (currentTilt > targetTilt) {
-    		power = (-power);
+    		power = (-1 * power);
     	}
     }
 

@@ -15,6 +15,6 @@ public class SonarSubsystem extends Subsystem {
     }
     
     public double getDistance() {
-    	return (sonar.getVoltage() / (5.0/ 512));
+    	return ((sonar.getVoltage() / (5/ 512)));
     }
 }
