@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.commands.commandgroups.pieces;
 
 import org.usfirst.frc.team2642.robot.commands.drive.DriveByGyro;
 import org.usfirst.frc.team2642.robot.commands.drive.TurnByGyro;
+import org.usfirst.frc.team2642.robot.commands.misc.StartAutoCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RStart_RScale extends CommandGroup {
 
     public RStart_RScale() {
+    	addSequential(new StartAutoCommand());
     	addSequential(new DriveByGyro(0, .9, 96, false));
     	addSequential(new DriveByGyro(0, .9, 74, false));
     	addSequential(new DriveByGyro(-42, .8, 56, false));

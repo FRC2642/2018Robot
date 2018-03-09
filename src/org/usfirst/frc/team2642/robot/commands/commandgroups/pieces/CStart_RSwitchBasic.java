@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.commands.commandgroups.pieces;
 
 import org.usfirst.frc.team2642.robot.commands.drive.DriveByGyro;
 import org.usfirst.frc.team2642.robot.commands.drive.TurnByGyro;
+import org.usfirst.frc.team2642.robot.commands.misc.StartAutoCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class CStart_RSwitchBasic extends CommandGroup {
 
     public CStart_RSwitchBasic() {
+    	addSequential(new StartAutoCommand());
     	addSequential(new WaitCommand(.1));
     	addSequential(new DriveByGyro(0, .7, 12, false));
     	addSequential(new DriveByGyro(45, .7, 96, false));
