@@ -20,6 +20,7 @@ import org.usfirst.frc.team2642.robot.subsystems.SonarSubsystem;
 import org.usfirst.frc.team2642.robot.utilities.AutoSelector;
 import org.usfirst.frc.team2642.robot.utilities.RoboRioLogger;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -51,17 +52,22 @@ public class Robot extends TimedRobot {
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
 	public static final RoboRioLogger logger = new RoboRioLogger();
+	
+	CameraServer server = CameraServer.getInstance();
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
+		while(drive.gyro.isCalibrating());
 		m_oi = new OI();
 		//m_chooser.addDefault("Default Auto", new DriveByVector(.5, 24));
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		compressor.start();
+		
+		server.startAutomaticCapture();
 	}
 
 	/**
@@ -77,6 +83,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Height", lift.liftPot.get());
 	}
 
 	/**
@@ -93,10 +100,19 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		//m_autonomousCommand = m_chooser.getSelected();
+		Robot.drive.invertMotor(true);
+		Robot.tilt.invertMotor(false);
+		Robot.tilt.initDefaultCommand();
+		drive.gyro.reset();
+		
+		lift.setInputRange(RobotMap.minLift, RobotMap.maxLift);
+		tilt.setInputRange(RobotMap.minTilt, RobotMap.maxTilt);
 		
 		AutoSelector a = new AutoSelector();
 		a.selectAuto();
 		m_autonomousCommand = a.autoCommand;
+		
+		//m_autonomousCommand = new TestCommandGroup();
 
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -110,6 +126,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("inches", drive.getDistanceLeft());
+		SmartDashboard.putNumber("Tilt", tilt.tiltPot.get());
+		SmartDashboard.putNumber("Gyro", drive.gyro.getAngle());
+		SmartDashboard.putNumber("Height", lift.liftPot.get());
+		SmartDashboard.putNumber("Sonar", sonar.getDistance());
+		SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
 	}
 
 	@Override
@@ -118,6 +140,10 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		SmartDashboard.putString("CurentCommand", ("" + Robot.tilt.getCurrentCommand()));
+		Robot.tilt.initDefaultCommand();
+		Robot.drive.invertMotor(false);
+		Robot.tilt.invertMotor(false);
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
@@ -129,7 +155,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		//SmartDashboard.putNumber("SonarVolts", sonar.sonar.getVoltage());
 		SmartDashboard.putNumber("Sonar", sonar.getDistance());
+		SmartDashboard.putNumber("Tilt", tilt.tiltPot.get());
+		SmartDashboard.putNumber("Height", lift.liftPot.get());
 		SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
 	}
 

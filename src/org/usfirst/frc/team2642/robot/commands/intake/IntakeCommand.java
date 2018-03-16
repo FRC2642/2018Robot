@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.commands.intake;
 
 import org.usfirst.frc.team2642.robot.OI;
 import org.usfirst.frc.team2642.robot.Robot;
+import org.usfirst.frc.team2642.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -26,16 +27,24 @@ public class IntakeCommand extends Command {
     		Robot.intake.intakeIn();
     	}
     	else if (isRightTriggerPulled()) {
-    		Robot.intake.intakeOut();
+    		if (Robot.lift.liftPot.get() > (RobotMap.switchHeight + .15)) {
+    			Robot.intake.intakeOut(1);
+    		}
+    		else {
+    			Robot.intake.intakeOut();
+    		}
     	}
     	else {
     		Robot.intake.stop();
     	}
     	if (OI.xbox.getAButtonPressed()) {
-    		Robot.intake.closeIntake();
+    		Robot.intake.releaseIntake();
     	}
     	else if (OI.xbox.getBButtonPressed()) {
     		Robot.intake.openIntake();
+    		
+    	} else if (OI.xbox.getXButtonPressed() ) {
+    		Robot.intake.closeIntake();
     	}
     }
 

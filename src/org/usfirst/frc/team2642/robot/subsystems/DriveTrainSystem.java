@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -24,7 +25,7 @@ public class DriveTrainSystem extends Subsystem {
 	public VictorSP rightDrive = new VictorSP(RobotMap.rightDriveMotorPort);
 	
 	//Sensors
-	public AHRS gyro = new AHRS(Port.kUSB1);
+	public AHRS gyro = new AHRS(I2C.Port.kOnboard);
 	public Encoder leftEncoder = new Encoder(RobotMap.leftEncoderChannelA, RobotMap.leftEncoderChannelB, false, EncodingType.k4X);
 	public Encoder rightEncoder = new Encoder(RobotMap.rightEncoderChannelA, RobotMap.rightEncoderChannelB, false, EncodingType.k4X);
 	
@@ -42,10 +43,9 @@ public class DriveTrainSystem extends Subsystem {
     	setDefaultCommand(new DriveCommand());
     }
     
-    public void invertMotor() {
-    	if (rightDrive.getInverted()) {
-    		
-    	}
+    public void invertMotor(boolean isInverted) {
+    	rightDrive.setInverted(isInverted);
+		leftDrive.setInverted(isInverted);
     }
     
     public void move(double moveValue, double rotateValue) {

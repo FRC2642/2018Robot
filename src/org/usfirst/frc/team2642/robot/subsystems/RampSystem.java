@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RampSystem extends Subsystem {
 
-	public Solenoid deployRampCylinder = new Solenoid(RobotMap.deployRampCylinderChannel);
+	//public Solenoid deployRampCylinder = new Solenoid(RobotMap.deployRampCylinderChannel);
 			
 	//public DoubleSolenoid raiseRampCylinder = new DoubleSolenoid(RobotMap.raiseRampCylinderChannel1, RobotMap.raiseRampCylinderChannel2);
 	
 	public RampSystem() {
-		deployRampCylinder.set(false);
+	//	deployRampCylinder.set(false);
 		//raiseRampCylinder.set(Value.kReverse);
 	}
     public void initDefaultCommand() {
@@ -25,11 +25,11 @@ public class RampSystem extends Subsystem {
     }
 
     public void deployRamp() {
-    	deployRampCylinder.set(true);
+    	//deployRampCylinder.set(true);
     }
     
     public void resetRamp() {
-    	deployRampCylinder.set(false);
+    	//deployRampCylinder.set(false);
     }
  
     public void raiseRamp() {

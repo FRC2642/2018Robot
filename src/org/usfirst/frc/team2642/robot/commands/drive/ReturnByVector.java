@@ -55,13 +55,13 @@ public class ReturnByVector extends Command {
     	double rightPower = basePower - powerCorrection;
 	    	if (setPoint < currentHeading)
 	    	{
-	    		leftPower -= correction;
-	    		rightPower += correction;
+	    		leftPower += correction;
+	    		rightPower -= correction;
 	    	}
 	    	else
 	    	{
-	    		leftPower += correction;
-	    		rightPower -= correction;
+	    		leftPower -= correction;
+	    		rightPower += correction;
 	    	}
     	Robot.drive.tankMove(leftPower, rightPower);
     }

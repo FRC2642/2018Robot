@@ -47,11 +47,11 @@ public class DriveByVector extends Command {
     		powerCorrection = .25;
     	}
     	double power = basePower + powerCorrection;
-    	if (Robot.pixy.getCubeCenter() < 170) {
+    	if (Robot.pixy.getCubeCenter() > 165) {
     		leftPower = (power - headingCorrection);
     		rightPower = (power + headingCorrection);
     	}
-    	else if (Robot.pixy.getCubeCenter() > 150) {
+    	else if (Robot.pixy.getCubeCenter() < 155) {
     		leftPower = (power + headingCorrection);
     		rightPower = (power - headingCorrection);
     	}

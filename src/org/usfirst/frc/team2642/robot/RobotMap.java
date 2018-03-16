@@ -28,10 +28,10 @@ public class RobotMap {
 	
 	//ports for subsystem pneumatic cylinders
 	public static int climbCylinderChannel = 0;
-	public static int deployRampCylinderChannel = 1;
 	public static int brakeCylinderChannel1 = 3;
 	public static int brakeCylinderChannel2 = 2;
-	public static int intakeCylinderChannel = 4;
+	public static int closeIntakeCylinderChannel = 4;
+	public static int openIntakeCylinderChannel = 1;
 	
 	//ports for subsystem motors
 	public static int leftDriveMotorPort = 0;
@@ -53,23 +53,23 @@ public class RobotMap {
 	public static int rightEncoderChannelB = 3;
 	
 	//Min and Max values for potentiometers
-	public static double minLift = .5;
-	public static double maxLift = .9;
-	public static double minTilt = .53;
-	public static double maxTilt = .8;
+	public static double minLift = .54;
+	public static double maxLift = .935;
+	public static double minTilt = .6;
+	public static double maxTilt = .85;
 	
 	//Encoder measurements
-	public static final double PULSES_PER_INCH = 200;
+	public static final double PULSES_PER_INCH = 200.0/12;
 	
 	//logger destination
 	public static final String logDirectory = "/home/lvuser/";
 	public static final String logFileName = "log.txt";
 	
 	//Pot height and tilt
-	public static final double switchHeight = 0.66;
-	public static final double switchTilt = 0.65;
-	public static final double scaleHeight = 0.9;
-	public static final double scaleTilt = 0.7;
-	public static final double cubeHeight = 0.5;
-	public static final double cubeTilt = 0.65;
+	public static final double switchHeight = 0.7;
+	public static final double switchTilt = 0.7;
+	public static final double scaleHeight = 0.93;
+	public static final double scaleTilt = 0.83;
+	public static final double cubeHeight = 0.55;
+	public static final double cubeTilt = 0.61;
 }

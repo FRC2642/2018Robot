@@ -24,7 +24,8 @@ public class ResetRampCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return !(Robot.ramp.deployRampCylinder.get());
+    	return true;
+    //	return !(Robot.ramp.deployRampCylinder.get());
     }
 
     // Called once after isFinished returns true

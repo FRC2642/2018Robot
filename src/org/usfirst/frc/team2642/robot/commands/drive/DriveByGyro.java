@@ -47,13 +47,13 @@ public class DriveByGyro extends Command {
     	double rightPower = basePower;
 	    	if (setPoint < currentHeading)
 	    	{
-	    		leftPower -= correction;
-	    		rightPower += correction;
+	    		leftPower += correction;
+	    		rightPower -= correction;
 	    	}
 	    	else
 	    	{
-	    		leftPower += correction;
-	    		rightPower -= correction;
+	    		leftPower -= correction;
+	    		rightPower += correction;
 	    	}
 	    if (debug)
 	    {
@@ -69,6 +69,7 @@ public class DriveByGyro extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.brake();
     	Robot.drive.stop();
     	if (debug) 
     	{

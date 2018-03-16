@@ -8,11 +8,13 @@ import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.LStart_Sc
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.LStart_Scale_RSwitch_LScale;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.LStart_Scale_RSwitch_RScale;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.LStart_Switch_LSwitch_LScale;
+import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.LStart_Switch_LSwitch_RScale;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.RStart_Scale_LSwitch_LScale;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.RStart_Scale_LSwitch_RScale;
-import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.RStart_Scale_RSwitch_LScale;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.RStart_Scale_RSwitch_RScale;
+import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.RStart_Switch_RSwitch_LScale;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.RStart_Switch_RSwitch_RScale;
+import org.usfirst.frc.team2642.robot.commands.commandgroups.pieces.DriveForward;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -28,16 +30,19 @@ public class AutoSelector {
 		if(isLStart() && isSwitchFirst() && isLSwitch() && isLScale()) {
 			autoCommand = new LStart_Switch_LSwitch_LScale();
 		}
-		if(isLStart() && isScaleFirst() && isLSwitch() && isLScale()) {
+		else if(isLStart() && isScaleFirst() && isLSwitch() && isLScale()) {
 			autoCommand = new LStart_Scale_LSwitch_LScale();
 		}
-		if(isLStart() && (isScaleFirst() || isSwitchFirst()) && isLSwitch() && isRScale()) {
+		else if(isLStart() && isScaleFirst() && isLSwitch() && isRScale()) {
 			autoCommand = new LStart_Scale_LSwitch_RScale();
+		}	
+		else if(isLStart() && isSwitchFirst() && isLSwitch() && isRScale()) {
+			autoCommand = new LStart_Switch_LSwitch_RScale();
 		}
-		if(isLStart() && (isScaleFirst() || isSwitchFirst()) && isRSwitch() && isLScale()) {
+		else if(isLStart() && (isScaleFirst() || isSwitchFirst()) && isRSwitch() && isLScale()) {
 			autoCommand = new LStart_Scale_RSwitch_LScale();
 		}
-		if(isLStart() && (isScaleFirst() || isSwitchFirst()) && isRSwitch() && isRScale()) {
+		else if(isLStart() && (isScaleFirst() || isSwitchFirst()) && isRSwitch() && isRScale()) {
 			autoCommand = new LStart_Scale_RSwitch_RScale();
 		}
 		
@@ -45,7 +50,7 @@ public class AutoSelector {
 		if(isCStart() && isLSwitch()) {
 			autoCommand = new CStart_Basic_LSwitch();
 		}
-		if(isCStart() && isRSwitch()) {
+		else if(isCStart() && isRSwitch()) {
 			autoCommand = new CStart_Basic_RSwitch();
 		}
 		
@@ -53,17 +58,22 @@ public class AutoSelector {
 		if(isRStart() && isSwitchFirst() && isRSwitch() && isRScale()) {
 			autoCommand = new RStart_Switch_RSwitch_RScale();
 		}
-		if(isRStart() && isScaleFirst() && isRSwitch() && isRScale()) {
+		else if(isRStart() && isScaleFirst() && isRSwitch() && isRScale()) {
 			autoCommand = new RStart_Scale_RSwitch_RScale();
 		}
-		if(isRStart() && (isScaleFirst() || isSwitchFirst()) && isRSwitch() && isLScale()) {
-			autoCommand = new RStart_Scale_RSwitch_LScale();
+		else if(isRStart() && isSwitchFirst() && isRSwitch() && isLScale()) {
+			autoCommand = new RStart_Switch_RSwitch_LScale();
 		}
-		if(isRStart() && (isScaleFirst() || isSwitchFirst()) && isLSwitch() && isRScale()) {
+		else if(isRStart() && isScaleFirst() && isLSwitch() && isRScale()) {
 			autoCommand = new RStart_Scale_LSwitch_RScale();
 		}
-		if(isRStart() && (isScaleFirst() || isSwitchFirst()) && isLSwitch() && isLScale()) {
+		else if(isRStart() && (isScaleFirst() || isSwitchFirst()) && isLSwitch() && isLScale()) {
 			autoCommand = new RStart_Scale_LSwitch_LScale();
+		}
+		
+		//basic
+		if(isBasicFirst()) {
+			autoCommand = new DriveForward();
 		}
 	}
 	

@@ -1,9 +1,11 @@
 package org.usfirst.frc.team2642.robot.subsystems;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
+import org.usfirst.frc.team2642.robot.commands.tilt.DefaultTiltCommand;
 import org.usfirst.frc.team2642.robot.commands.tilt.TiltIntakeCommand;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -25,7 +27,13 @@ public class IntakeTiltSystem extends PIDSubsystem {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new TiltIntakeCommand());
+       /* if (DriverStation.getInstance().isAutonomous()) {
+        	setDefaultCommand(new DefaultTiltCommand());
+        }
+        else {
+        	setDefaultCommand(new TiltIntakeCommand());
+        }*/
+    	setDefaultCommand(new TiltIntakeCommand());
     }
 
     protected double returnPIDInput() {
@@ -38,10 +46,10 @@ public class IntakeTiltSystem extends PIDSubsystem {
     
     //Tilt the intake
     public void tilt(double speed) {
-    	if ((speed > 0) && (tiltPot.get() > RobotMap.minTilt)) {
+    	if ((speed > 0) && (tiltPot.get() <= RobotMap.maxTilt)) {
     		intakeTiltMotor.set(speed);
     	}
-    	else if ((speed < 0) && (tiltPot.get() < RobotMap.maxTilt)) {
+    	else if ((speed < 0) && (tiltPot.get() >= RobotMap.minTilt)) {
     		intakeTiltMotor.set(speed);
     	}
     	else {
@@ -51,6 +59,10 @@ public class IntakeTiltSystem extends PIDSubsystem {
 
     public void lowerTilt() {
     //	intakeTiltMotor.se
+    }
+    
+    public void invertMotor(boolean isInverted) {
+    	intakeTiltMotor.setInverted(isInverted);
     }
     
     //Off
