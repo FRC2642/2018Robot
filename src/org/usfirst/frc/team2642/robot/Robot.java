@@ -112,6 +112,8 @@ public class Robot extends TimedRobot {
 		a.selectAuto();
 		m_autonomousCommand = a.autoCommand;
 		
+		//DONT USE THIS ANYMORE, USE test IN GAME DATA
+		
 		//m_autonomousCommand = new TestCommandGroup();
 
 		// schedule the autonomous command (example)

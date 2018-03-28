@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2642.robot.commands.drive;
 
 import org.usfirst.frc.team2642.robot.Robot;
+import org.usfirst.frc.team2642.robot.RobotMap;
 import org.usfirst.frc.team2642.robot.utilities.PIDCorrection;
 import org.usfirst.frc.team2642.robot.utilities.VectorValues;
 
@@ -20,12 +21,12 @@ public class DriveByVector extends Command {
 	double rightPower;
 	PIDCorrection pixyCorrection = new PIDCorrection(0.005);
 	PIDCorrection sonarCorrection = new PIDCorrection(0.006);
-    public DriveByVector(double basePower, double distance) {
+    public DriveByVector(double basePower) {
         requires(Robot.sonar);
         requires(Robot.pixy);
     	requires(Robot.drive);
         this.basePower = basePower;
-        this.distance = distance;
+        this.distance = RobotMap.sonarCubeDistance;
     }
 
     // Called just before this Command runs the first time

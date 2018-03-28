@@ -53,10 +53,21 @@ public class RobotMap {
 	public static int rightEncoderChannelB = 3;
 	
 	//Min and Max values for potentiometers
-	public static double minLift = .54;
-	public static double maxLift = .935;
+	public static double minLift = .545;
+	public static double maxLift = .95;
 	public static double minTilt = .6;
 	public static double maxTilt = .85;
+	
+	//Pot height and tilt
+	public static final double switchHeight = 0.7;
+	public static final double switchTilt = 0.7;
+	public static final double scaleHeight = maxLift;
+	public static final double scaleTilt = 0.83;
+	public static final double cubeHeight = minLift;
+	public static final double cubeTilt = minTilt;
+	
+	//Sonar distances
+	public static final double sonarCubeDistance = 8.5;
 	
 	//Encoder measurements
 	public static final double PULSES_PER_INCH = 200.0/12;
@@ -65,11 +76,4 @@ public class RobotMap {
 	public static final String logDirectory = "/home/lvuser/";
 	public static final String logFileName = "log.txt";
 	
-	//Pot height and tilt
-	public static final double switchHeight = 0.7;
-	public static final double switchTilt = 0.7;
-	public static final double scaleHeight = 0.93;
-	public static final double scaleTilt = 0.83;
-	public static final double cubeHeight = 0.55;
-	public static final double cubeTilt = 0.61;
 }

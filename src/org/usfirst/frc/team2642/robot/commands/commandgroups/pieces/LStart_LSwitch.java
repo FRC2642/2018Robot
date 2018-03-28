@@ -26,6 +26,6 @@ public class LStart_LSwitch extends CommandGroup {
     	addSequential(new WaitCommand(.3));
     	addSequential(new TurnByGyro(85, 2));
     	addSequential(new AutoIntake(false));
-    	addSequential(new DriveByGyro(90, -.8, 4, false));
+    	addSequential(new DriveByGyro(90, -.8, 5, false));
     }
 }

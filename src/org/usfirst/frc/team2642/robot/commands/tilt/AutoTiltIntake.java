@@ -12,7 +12,7 @@ public class AutoTiltIntake extends Command {
 	PIDCorrection tiltPID = new PIDCorrection(3.7037);
 	double targetTilt;
 	double currentTilt;
-	double basePower = .4;
+	double basePower = .45;
 	
     public AutoTiltIntake(double tilt) {
         requires(Robot.tilt);

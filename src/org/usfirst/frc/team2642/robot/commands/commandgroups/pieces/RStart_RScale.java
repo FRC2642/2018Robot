@@ -17,20 +17,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RStart_RScale extends CommandGroup {
 
     public RStart_RScale() {
-    	addParallel(new AutoTiltIntake(.7));
-    	addParallel(new AutoLiftCommand(.64));
     	addParallel(new AutoClamp(true));
-    	addSequential(new DriveByGyro(0, .9, 96, false));
-    	addSequential(new DriveByGyro(0, .9, 74, false));
-    	addSequential(new DriveByGyro(-42, .8, 56, false));
+    	addParallel(new AutoTiltIntake(.7));
+    	addSequential(new DriveByGyro(0, .9, 164, false));
     	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));
     	addParallel(new AutoTiltIntake(RobotMap.scaleTilt));
-    	addSequential(new DriveByGyro(-10, .7, 24, false));
-    	addSequential(new DriveByGyro(0, .7, 8, false));
-    	addSequential(new TurnByGyro(0, 2));
-    	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));
-    	addParallel(new AutoTiltIntake(RobotMap.scaleTilt));
+    	addSequential(new DriveByGyro(-36, .8, 55, false));
+    	addSequential(new DriveByGyro(-25, .8, 2, false));
+    	addSequential(new DriveByGyro(-10, .8, 2, false));
+    	addSequential(new DriveByGyro(0, .7, 13, false));
+    	addSequential(new TurnByGyro(-5, 2));
     	addSequential(new AutoIntake(false));
-    	addSequential(new DriveByGyro(0, -.8, 16, false));
+    	addSequential(new TurnByGyro(0, 2));
+    	addSequential(new DriveByGyro(0, -.8, 20, false));
+    	addParallel(new AutoTiltIntake(RobotMap.cubeTilt));
+    	addSequential(new AutoLiftCommand(RobotMap.cubeHeight));
     }
 }

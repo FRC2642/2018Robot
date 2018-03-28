@@ -21,10 +21,10 @@ public class LScaleToLSwitch extends CommandGroup {
 
     public LScaleToLSwitch() {
     	addSequential(new TurnByGyro(165, 1.5));
-    	addParallel(new AutoClamp(false));
+    	addSequential(new AutoClamp(false));
     	addSequential(new FindCubeCommand(.5, true));
     	addParallel(new AutoIntake(true));
-    	addSequential(new DriveByVector(.5, 12));
+    	addSequential(new DriveByVector(.5));
     	addSequential(new DriveByGyro(163, -.8, 3, false));
     	addSequential(new WaitCommand(.3));
     	addParallel(new AutoTiltIntake(RobotMap.switchTilt));

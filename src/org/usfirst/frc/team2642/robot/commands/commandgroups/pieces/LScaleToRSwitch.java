@@ -19,13 +19,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LScaleToRSwitch extends CommandGroup {
 
     public LScaleToRSwitch() {
-    	addSequential(new DriveByGyro(0, -.8, 3, false));
-    	addSequential(new TurnByGyro(90, 2));
-        addSequential(new DriveByGyro(90, .8, 44, false));
-        addSequential(new DriveByGyro(90, .7, 50, false));
-        addSequential(new DriveByGyro(90, .8, 94, false));
-        addSequential(new TurnByGyro(190, 2));
-        
     	/*addSequential(new TurnByGyro(90, 2));
     	addParallel(new AutoClamp(false));
     	addSequential(new FindCubeCommand(.5, true));
@@ -46,11 +39,17 @@ public class LScaleToRSwitch extends CommandGroup {
         addSequential(new AutoIntake(false));
         addParallel(new AutoTiltIntake(RobotMap.scaleTilt));
         addSequential(new DriveByGyro(180, -.8, 7, false));*/
-        
-     	addParallel(new AutoClamp(false));
+    	
+    	addSequential(new DriveByGyro(0, -.8, 24, false));
+    	addSequential(new TurnByGyro(90, 2));
+        addSequential(new DriveByGyro(90, .8, 44, false));
+        addSequential(new DriveByGyro(90, .7, 50, false));
+        addSequential(new DriveByGyro(90, .8, 70, false));
+        addSequential(new TurnByGyro(195, 2));
+     	addSequential(new AutoClamp(false));
     	addSequential(new FindCubeCommand(.5, true));
     	addParallel(new AutoIntake(true));
-    	addSequential(new DriveByVector(.5, 11));
+    	addSequential(new DriveByVector(.5));
     	addSequential(new WaitCommand(.15));
     	addSequential(new DriveByGyro(180, -.8, 6, false));
     	addParallel(new AutoTiltIntake(RobotMap.switchTilt));

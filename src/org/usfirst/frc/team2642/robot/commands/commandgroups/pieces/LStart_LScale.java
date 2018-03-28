@@ -19,14 +19,16 @@ public class LStart_LScale extends CommandGroup {
     public LStart_LScale() {
     	addParallel(new AutoClamp(true));
     	addParallel(new AutoTiltIntake(.7));
-    	addSequential(new DriveByGyro(0, .9, 164, false));
+    	addSequential(new DriveByGyro(0, .9, 76, false));
     	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));
     	addParallel(new AutoTiltIntake(RobotMap.scaleTilt));
+    	addSequential(new DriveByGyro(0, .9, 76, false));
     	addSequential(new DriveByGyro(36, .8, 55, false));
     	addSequential(new DriveByGyro(25, .8, 2, false));
     	addSequential(new DriveByGyro(10, .8, 2, false));
     	addSequential(new DriveByGyro(0, .8, 13, false));
-    	addSequential(new TurnByGyro(4, 2));
+    	addSequential(new TurnByGyro(5, 2));
+    	addSequential(new AutoTiltIntake(RobotMap.scaleTilt));
     	addSequential(new AutoIntake(false));
     	addSequential(new TurnByGyro(0, 2));
     	addSequential(new DriveByGyro(0, -.8, 20, false));

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2642.robot.utilities;
 
 import org.usfirst.frc.team2642.robot.OI;
+import org.usfirst.frc.team2642.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.CStart_Basic_LSwitch;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.CStart_Basic_RSwitch;
 import org.usfirst.frc.team2642.robot.commands.commandgroups.fullpaths.LStart_Scale_LSwitch_LScale;
@@ -75,6 +76,12 @@ public class AutoSelector {
 		if(isBasicFirst()) {
 			autoCommand = new DriveForward();
 		}
+		
+		//test code
+		if(isTestCode()) {
+			autoCommand = new TestCommandGroup();
+		}
+				
 	}
 	
 	public boolean isLStart() {
@@ -151,6 +158,13 @@ public class AutoSelector {
 	
 	public boolean isRScale() {
 		if(!isLScale()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean isTestCode() {
+		if(gameData.equals("test")) {
 			return true;
 		} else {
 			return false;
