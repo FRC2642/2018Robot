@@ -21,8 +21,9 @@ public class LiftSystem extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-		super(.001, 0, 0);
-		disable();
+		super("Lift", .001, 0, 0);
+		
+		disable();		
     }
 
     public void initDefaultCommand() {

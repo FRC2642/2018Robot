@@ -1,29 +1,26 @@
-package org.usfirst.frc.team2642.robot.commands.misc;
+package org.usfirst.frc.team2642.robot.commands.tilt;
 
 import org.usfirst.frc.team2642.robot.Robot;
-import org.usfirst.frc.team2642.robot.RobotMap;
 import org.usfirst.frc.team2642.robot.utilities.PIDCorrection;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class StartAutoCommand extends Command {
+public class DefaultTiltCommand extends Command {
 	PIDCorrection tiltPID = new PIDCorrection(3.7037);
-	double targetTilt = RobotMap.cubeTilt;
+	double targetTilt;
 	double currentTilt;
-	double basePower = .7;
+	double basePower = .4;
 	
-    public StartAutoCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.tilt);
+    public DefaultTiltCommand() {
+        requires(Robot.tilt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	targetTilt = Robot.tilt.tiltPot.get();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,11 +31,12 @@ public class StartAutoCommand extends Command {
     	if (currentTilt > targetTilt) {
     		power = (-1 * power);
     	}
+    	Robot.tilt.tilt(power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	 return ((currentTilt < (targetTilt + .04)) && (currentTilt > (targetTilt - .04)));
+        return false;
     }
 
     // Called once after isFinished returns true

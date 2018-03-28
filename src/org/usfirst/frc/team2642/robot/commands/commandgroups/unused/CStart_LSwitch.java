@@ -1,8 +1,12 @@
-package org.usfirst.frc.team2642.robot.commands.commandgroups.pieces;
+package org.usfirst.frc.team2642.robot.commands.commandgroups.unused;
 
+import org.usfirst.frc.team2642.robot.RobotMap;
 import org.usfirst.frc.team2642.robot.commands.drive.DriveByGyro;
 import org.usfirst.frc.team2642.robot.commands.drive.TurnByGyro;
-import org.usfirst.frc.team2642.robot.commands.misc.StartAutoCommand;
+import org.usfirst.frc.team2642.robot.commands.intake.AutoClamp;
+import org.usfirst.frc.team2642.robot.commands.lift.AutoLiftCommand;
+import org.usfirst.frc.team2642.robot.commands.lift.AutoLiftCommand.LiftHeight;
+import org.usfirst.frc.team2642.robot.commands.tilt.AutoTiltIntake;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -12,7 +16,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CStart_LSwitch extends CommandGroup {
 
     public CStart_LSwitch() {
-    	addSequential(new StartAutoCommand());
+    	addSequential(new AutoTiltIntake(.7));
+    	addParallel(new AutoClamp(true));
     	addSequential(new DriveByGyro(0, .8, 6, false));
     	addSequential(new DriveByGyro(-60, .8, 113, false));
     	addSequential(new DriveByGyro(-50, .8, 2, false));

@@ -25,6 +25,8 @@ public class TurnByGyro extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drive.brake();
+    	Robot.drive.stop();
     	Robot.drive.resetEncoder();
     }
 
@@ -34,19 +36,19 @@ public class TurnByGyro extends Command {
     	double correction = pidCorrection.calculateCorrection(targetAngle, currentHeading);
     	double leftPower;
     	double rightPower;
-    	if (correction > .25) {
-    		correction = .25;
+    	if (correction > .5) {
+    		correction = .5;
     	}
     	
     	if (targetAngle < currentHeading)
     	{
-    		leftPower = -(.5 + correction);
-    		rightPower = (.5 + correction);
+    		leftPower = (.35 + correction);
+    		rightPower = -(.35 + correction);
     	}
     	else
     	{
-    		leftPower = (.5 + correction);
-    		rightPower = -(.5 + correction);
+    		leftPower = -(.35 + correction);
+    		rightPower = (.35 + correction);
     	}
     	Robot.drive.tankMove(leftPower, rightPower);
     	
@@ -70,6 +72,7 @@ public class TurnByGyro extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.brake();
     	Robot.drive.stop();
     }
 

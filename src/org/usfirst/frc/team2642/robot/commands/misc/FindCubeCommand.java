@@ -3,6 +3,7 @@ package org.usfirst.frc.team2642.robot.commands.misc;
 import org.usfirst.frc.team2642.robot.Robot;
 import org.usfirst.frc.team2642.robot.utilities.PIDCorrection;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -12,7 +13,9 @@ public class FindCubeCommand extends Command {
 	double basePower;
 	double leftPower;
 	double rightPower;
+	Timer timer = new Timer();
 	boolean turnRight;
+	boolean isStabalizing = false;
 	PIDCorrection pidCorrection = new PIDCorrection(0.005);
 	
     public FindCubeCommand(double basePower, boolean turnRight) {
@@ -29,35 +32,39 @@ public class FindCubeCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double currentHeading = Robot.pixy.getCubeCenter();
-    	double correction = pidCorrection.calculateCorrection(140, currentHeading);
+    	double correction = pidCorrection.calculateCorrection(160, currentHeading);
     	if (correction > .25) {
     		correction = .25;
     	}
     	if (Robot.pixy.isCubeVisible() == true) {
-	    	if (Robot.pixy.getCubeCenter() < 145) {
-	    		leftPower = -(.45 + correction);
-	    		rightPower = (.45 + correction);
+	    	if (Robot.pixy.getCubeCenter() > 165) {
+	    		leftPower = -(.4 + correction);
+	    		rightPower = (.4 + correction);
 		    	Robot.drive.tankMove(leftPower, rightPower);
 	    	}
-	    	else if (Robot.pixy.getCubeCenter() > 135) {
-	    		leftPower = (.45 + correction);
-	    		rightPower = -(.45 + correction);
+	    	else if (Robot.pixy.getCubeCenter() < 155) {
+	    		leftPower = (.4 + correction);
+	    		rightPower = -(.4 + correction);
 		    	Robot.drive.tankMove(leftPower, rightPower);
 	    	}
     	}
-    	else {
+    	/*else {
     		if(turnRight) {
-    			Robot.drive.tankMove(basePower, -basePower);
-    		}
-    		else {
     			Robot.drive.tankMove(-basePower, basePower);
     		}
+    		else {
+    			Robot.drive.tankMove(basePower, -basePower);
+    		}*/
+    	//}
+    	if ((Robot.pixy.getCubeCenter() > 150) && (Robot.pixy.getCubeCenter() < 170) && !isStabalizing) {
+    		timer.start();
+    		isStabalizing = true;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if ((Robot.pixy.getCubeCenter() > 130) && (Robot.pixy.getCubeCenter() < 150)) {
+    	if (timer.get() > .5) {
     		return true;
     	}
     	else {

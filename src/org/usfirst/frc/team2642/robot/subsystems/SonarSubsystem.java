@@ -9,12 +9,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class SonarSubsystem extends Subsystem {
-	AnalogInput sonar = new AnalogInput(RobotMap.sonarPort);
+	public AnalogInput sonar = new AnalogInput(RobotMap.sonarPort);
     public void initDefaultCommand() {
     	
     }
     
     public double getDistance() {
-    	return ((sonar.getVoltage() / (5/ 512)));
+    	return ((sonar.getVoltage() / (5.0/512)));
+    	//old conversion ((5.0/ 1024) / .2)
     }
 }

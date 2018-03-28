@@ -4,22 +4,25 @@ import org.usfirst.frc.team2642.robot.Robot;
 import org.usfirst.frc.team2642.robot.utilities.PIDCorrection;
 import org.usfirst.frc.team2642.robot.utilities.RoboRioLogger;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DriveByGyro extends Command {
+public class DriveByGyroWithTimeOut extends Command {
 	
 	PIDCorrection pidCorrection = new PIDCorrection(0.008);
 	double setPoint;
 	double basePower;
 	double targetDistance;
 	double correction;
+	double timeOut;
 	RoboRioLogger logger;
 	boolean debug;
+	Timer timer = new Timer();
 	
-    public DriveByGyro(double setPoint, double basePower, double targetDistance, boolean debug) {
+    public DriveByGyroWithTimeOut(double setPoint, double basePower, double targetDistance, boolean debug, double timeOut) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drive);
@@ -27,6 +30,7 @@ public class DriveByGyro extends Command {
     	this.basePower = basePower;
     	this.targetDistance = targetDistance;
     	this.debug = debug;
+    	this.timeOut = timeOut;
     	if (debug)
     	{
     		logger = new RoboRioLogger();	
@@ -37,6 +41,7 @@ public class DriveByGyro extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drive.resetEncoder();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -64,6 +69,9 @@ public class DriveByGyro extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if(timer.get() > timeOut) {
+    		return true;
+    	}
         return (Robot.drive.getAverageDistance() >= targetDistance);
     }
 

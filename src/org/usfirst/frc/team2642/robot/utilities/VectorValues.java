@@ -8,7 +8,7 @@ public final class VectorValues {
 	public static double lastEncoderPulses = 0;
 	
 	public static double getMagnitude() {
-		return Math.sqrt(Math.pow(vectorComponentX - (8 * RobotMap.PULSES_PER_INCH), 2) + Math.pow(vectorComponentY, 2));
+		return Math.sqrt(Math.pow(vectorComponentX - (4 * RobotMap.PULSES_PER_INCH), 2) + Math.pow(vectorComponentY, 2));
 	}
 	
 	public static double getAngle() {

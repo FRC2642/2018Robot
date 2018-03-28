@@ -19,10 +19,11 @@ public class IntakeSystem extends Subsystem {
 	
 	//DigitalInput limit = new DigitalInput();
 	
-	Solenoid intakeCylinder = new Solenoid(RobotMap.intakeCylinderChannel);
+	Solenoid closeIntakeCylinder = new Solenoid(RobotMap.closeIntakeCylinderChannel);
+	Solenoid openIntakeCylinder = new Solenoid(RobotMap.openIntakeCylinderChannel);
   
 	public IntakeSystem() {
-		intakeMotor2.setInverted(true);
+		intakeMotor2.setInverted(false);
 	}
     public void initDefaultCommand() {
     	setDefaultCommand(new IntakeCommand());
@@ -30,22 +31,34 @@ public class IntakeSystem extends Subsystem {
     
     //Grabs cube
     public void intakeIn() {
-    	intakeMotor1.set(-1);
-    	intakeMotor2.set(-1);
+    	intakeMotor1.set(-.75);
+    	intakeMotor2.set(-.75);
     }
     
     //Ejects cube
     public void intakeOut() {
-    	intakeMotor1.set(1);
-    	intakeMotor2.set(1);
+    	intakeMotor1.set(.75);
+    	intakeMotor2.set(.75);
+    }
+    
+    public void intakeOut(double speed) {
+    	intakeMotor1.set(speed);
+    	intakeMotor2.set(speed);
     }
     
     public void closeIntake() {
-    	intakeCylinder.set(true);
+    	closeIntakeCylinder.set(true);
+    	openIntakeCylinder.set(false);
+    }
+    
+    public void releaseIntake() {
+    	closeIntakeCylinder.set(false);
+    	openIntakeCylinder.set(false);
     }
     
     public void openIntake() {
-    	intakeCylinder.set(false);
+    	openIntakeCylinder.set(true);
+    	closeIntakeCylinder.set(false);
     }
     
     //Stop motors
