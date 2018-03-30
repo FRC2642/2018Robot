@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2642.robot.commands.commandgroups.unused;
 
-import org.usfirst.frc.team2642.robot.commands.drive.DriveByVector;
+import org.usfirst.frc.team2642.robot.commands.drive.DriveByPixy;
 import org.usfirst.frc.team2642.robot.commands.misc.FindCubeCommand;
 import org.usfirst.frc.team2642.robot.commands.drive.ReturnByVector;
 import org.usfirst.frc.team2642.robot.commands.drive.TurnByGyro;
@@ -36,7 +36,7 @@ public class VectorExample extends CommandGroup {
     	addSequential(new FindCubeCommand(.8, true));
     	addSequential(new WaitCommand(5));
     	
-    	addSequential(new DriveByVector(.5));
+    	addSequential(new DriveByPixy(.5));
     	addSequential(new WaitCommand(5));
     	
     	addSequential(new ReturnByVector(-.5));
@@ -51,7 +51,7 @@ public class VectorExample extends CommandGroup {
     	addSequential(new FindCubeCommand(.8, true));
     	addSequential(new WaitCommand(5));
     	
-    	addSequential(new DriveByVector(.5));
+    	addSequential(new DriveByPixy(.5));
     	addSequential(new WaitCommand(5));
     	
     	addSequential(new ReturnByVector(-.5));

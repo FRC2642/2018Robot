@@ -19,7 +19,6 @@ public class FindCubeCommand extends Command {
 	PIDCorrection pidCorrection = new PIDCorrection(0.005);
 	
     public FindCubeCommand(double basePower, boolean turnRight) {
-    	requires(Robot.pixy);
     	requires(Robot.drive);
     	this.basePower = basePower;
     	this.turnRight = turnRight;
@@ -31,40 +30,53 @@ public class FindCubeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double currentHeading = Robot.pixy.getCubeCenter();
+    	double currentHeading;
+    	synchronized(Robot.pixyState) {
+    		currentHeading = Robot.pixyState.getCubeCenter();
+    	};
+    	
+    	boolean isCubeVisible;
+    	synchronized(Robot.pixyState) {
+    		isCubeVisible = Robot.pixyState.getIsCubeVisible();
+    	};
     	double correction = pidCorrection.calculateCorrection(160, currentHeading);
     	if (correction > .25) {
     		correction = .25;
     	}
-    	if (Robot.pixy.isCubeVisible() == true) {
-	    	if (Robot.pixy.getCubeCenter() > 165) {
+    	if (isCubeVisible) {
+	    	if (currentHeading > 165) {
 	    		leftPower = -(.4 + correction);
 	    		rightPower = (.4 + correction);
 		    	Robot.drive.tankMove(leftPower, rightPower);
 	    	}
-	    	else if (Robot.pixy.getCubeCenter() < 155) {
+	    	else if (currentHeading < 155) {
 	    		leftPower = (.4 + correction);
 	    		rightPower = -(.4 + correction);
 		    	Robot.drive.tankMove(leftPower, rightPower);
 	    	}
     	}
-    	/*else {
+    	else {
     		if(turnRight) {
     			Robot.drive.tankMove(-basePower, basePower);
     		}
     		else {
     			Robot.drive.tankMove(basePower, -basePower);
-    		}*/
-    	//}
-    	if ((Robot.pixy.getCubeCenter() > 150) && (Robot.pixy.getCubeCenter() < 170) && !isStabalizing) {
+    		}
+    	}
+    	/*if ((Robot.pixy.getCubeCenter() > 150) && (Robot.pixy.getCubeCenter() < 170) && !isStabalizing) {
     		timer.start();
     		isStabalizing = true;
-    	}
+    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (timer.get() > .5) {
+    	double currentHeading;
+    	synchronized(Robot.pixyState) {
+    		currentHeading = Robot.pixyState.getCubeCenter();
+    	};
+    	
+    	if ((currentHeading > 150) && (currentHeading < 170)) {
     		return true;
     	}
     	else {

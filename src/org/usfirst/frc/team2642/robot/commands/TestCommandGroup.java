@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2642.robot.commands;
 
 import org.usfirst.frc.team2642.robot.RobotMap;
-import org.usfirst.frc.team2642.robot.commands.drive.DriveByVector;
+import org.usfirst.frc.team2642.robot.commands.drive.DriveByPixy;
 import org.usfirst.frc.team2642.robot.commands.drive.TurnByGyro;
 import org.usfirst.frc.team2642.robot.commands.intake.AutoClamp;
 import org.usfirst.frc.team2642.robot.commands.intake.AutoIntake;
@@ -45,6 +45,6 @@ public class TestCommandGroup extends CommandGroup {
     	addSequential(new TurnByGyro(135, 1.5));
     	addSequential(new AutoClamp(false));
     	addParallel(new AutoIntake(true));
-    	addSequential(new DriveByVector(.5));
+    	addSequential(new DriveByPixy(.5));
     }
 }

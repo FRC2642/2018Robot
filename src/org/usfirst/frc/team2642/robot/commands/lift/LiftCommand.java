@@ -39,7 +39,7 @@ public class LiftCommand extends Command {
         	Robot.lift.moveLift(power);
     	}
     	else {
-    		Robot.lift.moveLift(OI.auxXbox.getRawAxis(5) * .8);
+    		Robot.lift.moveLift(OI.auxXbox.getRawAxis(5) * 1.0);
     	}
     }
 

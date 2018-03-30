@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveByVector extends Command {
+public class DriveByPixy extends Command {
 	double encoderValue;
 	double totalEncoderValue;
 	double vectorComponentX;
@@ -21,9 +21,9 @@ public class DriveByVector extends Command {
 	double rightPower;
 	PIDCorrection pixyCorrection = new PIDCorrection(0.005);
 	PIDCorrection sonarCorrection = new PIDCorrection(0.006);
-    public DriveByVector(double basePower) {
-        requires(Robot.sonar);
-        requires(Robot.pixy);
+    public DriveByPixy(double basePower) {
+        /*requires(Robot.sonar);
+        requires(Robot.pixy);*/
     	requires(Robot.drive);
         this.basePower = basePower;
         this.distance = RobotMap.sonarCubeDistance;
@@ -37,22 +37,26 @@ public class DriveByVector extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double currentPulses;
-    	double currentHeading = Robot.pixy.getCubeCenter();
+    	double currentHeading;
+    	synchronized(Robot.pixyState) {
+    		currentHeading = Robot.pixyState.getCubeCenter();
+    	};
     	double headingCorrection = pixyCorrection.calculateCorrection(160, currentHeading);
-    	double currentDistance = Robot.sonar.getDistance();
-    	double powerCorrection = sonarCorrection.calculateCorrection(distance, currentDistance);
+    	//double currentDistance = Robot.sonar.getDistance();
+    	//double powerCorrection = sonarCorrection.calculateCorrection(distance, currentDistance);
     	if (headingCorrection > .25) {
     		headingCorrection = .25;
     	}
-    	if(powerCorrection > .25) {
+    	/*if(powerCorrection > .25) {
     		powerCorrection = .25;
-    	}
-    	double power = basePower + powerCorrection;
-    	if (Robot.pixy.getCubeCenter() > 165) {
+    	}*/
+    	
+    	double power = basePower + .25;
+    	if (currentHeading > 165) {
     		leftPower = (power - headingCorrection);
     		rightPower = (power + headingCorrection);
     	}
-    	else if (Robot.pixy.getCubeCenter() < 155) {
+    	else if (currentHeading < 155) {
     		leftPower = (power + headingCorrection);
     		rightPower = (power - headingCorrection);
     	}
@@ -71,7 +75,11 @@ public class DriveByVector extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return (Robot.sonar.getDistance() <= distance);
+    	boolean isCubeInRange = false;
+    	synchronized(Robot.sonarState) {
+    		isCubeInRange = Robot.sonarState.getIsCubeInRange();
+    	}
+    	return isCubeInRange;
     }
 
     // Called once after isFinished returns true
