@@ -28,7 +28,12 @@ public class AutoIntake extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (intakeIn) {
-    		if (Robot.sonar.getDistance() <= 9){
+    		boolean isCubeInRange = false;
+        	synchronized(Robot.sonarState) {
+        		isCubeInRange = Robot.sonarState.getIsCubeInRange();
+        	}
+        	
+    		if (isCubeInRange){
     			Robot.intake.closeIntake();
     			Robot.intake.intakeIn();
     			isInRange = true;

@@ -20,8 +20,11 @@ import org.usfirst.frc.team2642.robot.subsystems.SonarSubsystem;
 import org.usfirst.frc.team2642.robot.utilities.AutoSelector;
 import org.usfirst.frc.team2642.robot.utilities.RoboRioLogger;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -44,16 +47,65 @@ public class Robot extends TimedRobot {
 	public static final LiftSystem       lift = new LiftSystem();
 	public static final RampSystem       ramp = new RampSystem();
 	public static final Compressor compressor = new Compressor();
-	public static PixySubsystem pixy = new PixySubsystem();
-	public static SonarSubsystem sonar = new SonarSubsystem();
+	//public static PixySubsystem pixy = new PixySubsystem();
+	//public static SonarSubsystem sonar = new SonarSubsystem();
 	public static OI m_oi;
-
+	
+	AnalogInput pixyAnalog = new AnalogInput(RobotMap.pixyAnalogPort);
+	DigitalInput pixyDigital = new DigitalInput(RobotMap.pixyDigitalPort);
+	AnalogInput sonar = new AnalogInput(RobotMap.sonarPort);
+	public static SonarState sonarState = new SonarState(); 
+	public static PixyState pixyState = new PixyState(); 
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
 	public static final RoboRioLogger logger = new RoboRioLogger();
 	
 	CameraServer server = CameraServer.getInstance();
+	
+	Thread sonarThread = new Thread(new Runnable() {
+		public void run() {
+			while (!RobotState.isDisabled()) {
+				if (getDistance() < 9) {
+					synchronized(sonarState) {
+						sonarState.setIsCubeInRange(true);
+					}
+				}
+				
+				synchronized(sonarState) {
+					sonarState.setObjectProximity(getDistance());
+				}
+			};
+		}
+			
+		private double getDistance() {
+		    return ((sonar.getVoltage() / (5.0/512)));
+		    //old conversion ((5.0/ 1024) / .2)
+		   }
+	});
+	
+	Thread pixyThread = new Thread(new Runnable() {
+		public void run() {
+			while (!RobotState.isDisabled()) {
+				if (isCubeVisible()) {
+					synchronized(pixyState) {
+						pixyState.setIsCubeVisible(true);
+						pixyState.setCubeCenter(getCubeCenter());
+					}
+				}
+			};
+		}
+		
+	    public double getCubeCenter() {
+	    	return (pixyAnalog.getVoltage() / 3.3) * 320;
+	    }
+	    
+	    public boolean isCubeVisible() {
+	    	return pixyDigital.get();
+	    }
+	});
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -108,6 +160,9 @@ public class Robot extends TimedRobot {
 		lift.setInputRange(RobotMap.minLift, RobotMap.maxLift);
 		tilt.setInputRange(RobotMap.minTilt, RobotMap.maxTilt);
 		
+		sonarThread.start();
+		pixyThread.start();
+		
 		AutoSelector a = new AutoSelector();
 		a.selectAuto();
 		m_autonomousCommand = a.autoCommand;
@@ -132,8 +187,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Tilt", tilt.tiltPot.get());
 		SmartDashboard.putNumber("Gyro", drive.gyro.getAngle());
 		SmartDashboard.putNumber("Height", lift.liftPot.get());
-		SmartDashboard.putNumber("Sonar", sonar.getDistance());
-		SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
+		//SmartDashboard.putNumber("Sonar", sonar.getDistance());
+		//SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
 	}
 
 	@Override
@@ -158,10 +213,10 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		//SmartDashboard.putNumber("SonarVolts", sonar.sonar.getVoltage());
-		SmartDashboard.putNumber("Sonar", sonar.getDistance());
+		//SmartDashboard.putNumber("Sonar", sonar.getDistance());
 		SmartDashboard.putNumber("Tilt", tilt.tiltPot.get());
 		SmartDashboard.putNumber("Height", lift.liftPot.get());
-		SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
+		//SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
 	}
 
 	/**
