@@ -20,7 +20,7 @@ public class DriveByPixy extends Command {
 	double leftPower;
 	double rightPower;
 	PIDCorrection pixyCorrection = new PIDCorrection(0.005);
-	PIDCorrection sonarCorrection = new PIDCorrection(0.006);
+	//PIDCorrection sonarCorrection = new PIDCorrection(0.006);
     public DriveByPixy(double basePower) {
         /*requires(Robot.sonar);
         requires(Robot.pixy);*/
@@ -31,6 +31,12 @@ public class DriveByPixy extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	synchronized(Robot.pixyState){
+    		Robot.pixyState.reset();
+    	}
+    	synchronized(Robot.sonarState){
+    		Robot.sonarState.reset();
+    	}
     	Robot.drive.resetEncoder();
     }
 
