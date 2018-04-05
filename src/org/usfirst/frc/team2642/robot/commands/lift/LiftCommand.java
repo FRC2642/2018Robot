@@ -2,6 +2,7 @@ package org.usfirst.frc.team2642.robot.commands.lift;
 
 import org.usfirst.frc.team2642.robot.OI;
 import org.usfirst.frc.team2642.robot.Robot;
+import org.usfirst.frc.team2642.robot.RobotMap;
 import org.usfirst.frc.team2642.robot.utilities.PIDCorrection;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -15,6 +16,8 @@ public class LiftCommand extends Command {
 	double targetHeight;
 	double currentHeight;
 	double basePower = .45;
+	double liftSpeed;
+
 	
     public LiftCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -29,7 +32,7 @@ public class LiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (DriverStation.getInstance().isAutonomous()) {
+    	/*if (DriverStation.getInstance().isAutonomous()) {
     		currentHeight = Robot.lift.liftPot.get();
         	double correction = liftPID.calculateCorrection(targetHeight, currentHeight);
         	double power = basePower + correction;
@@ -38,10 +41,21 @@ public class LiftCommand extends Command {
         	}
         	Robot.lift.moveLift(power);
     	}
-    	else {
+    	else {*/
+    		
     		Robot.lift.moveLift(OI.auxXbox.getRawAxis(5) * 1.0);
+    		/*liftSpeed = OI.auxXbox.getRawAxis(5);
+    		if(liftSpeed < 0 && currentHeight <= RobotMap.midpointLift) {
+    			Robot.lift.moveLift(liftSpeed * .6);
+    		}
+    		else if(liftSpeed > 0 && currentHeight >= RobotMap.midpointLift) {
+    			Robot.lift.moveLift(liftSpeed * .6);
+    		} 
+    		
+    		else {Robot.lift.moveLift(OI.auxXbox.getRawAxis(5) * 1.0);
+    		}*/
     	}
-    }
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

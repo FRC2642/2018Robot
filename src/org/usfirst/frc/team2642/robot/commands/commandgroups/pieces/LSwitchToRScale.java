@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LSwitchToRScale extends CommandGroup {
 
     public LSwitchToRScale() {
-    	addSequential(new TurnByGyro(0, 2));
+    	/*addSequential(new TurnByGyro(0, 2));
     	addParallel(new AutoLiftCommand(RobotMap.cubeHeight));
     	addParallel(new AutoTiltIntake(RobotMap.cubeTilt));
     	addParallel(new AutoClamp(false));
@@ -40,6 +40,30 @@ public class LSwitchToRScale extends CommandGroup {
     	addSequential(new TurnByGyro(0, 2));
     	addSequential(new DriveByGyro(0, .9, 10, false));
     	addSequential(new AutoIntake(false));
-    	addSequential(new DriveByGyro(0, -.9, 10, false));
+    	addSequential(new DriveByGyro(0, -.9, 10, false));*/
+    	
+    	addSequential(new TurnByGyro(0, 2));
+    	addParallel(new AutoLiftCommand(RobotMap.cubeHeight));
+    	addParallel(new AutoTiltIntake(RobotMap.cubeTilt));
+    	addParallel(new AutoClamp(false));
+    	addSequential(new DriveByGyro(0, .8, 60, false));
+    	addSequential(new TurnByGyro(150, 2));
+    	addSequential(new FindCubeCommand(.5, true));
+    	addParallel(new AutoIntake(true));
+    	addSequential(new DriveByPixy(.5));
+    	addSequential(new WaitCommand(.3));
+    	addParallel(new AutoTiltIntake(RobotMap.scaleTilt));
+    	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));
+    	addSequential(new ReturnByVector(-.5));
+    	addSequential(new TurnByGyro(90, 2));
+    	addSequential(new DriveByGyro(90, .9, 60, false));
+    	addSequential(new DriveByGyro(90, .7, 48, false));
+    	addParallel(new AutoLiftCommand(RobotMap.scaleHeight));
+    	addParallel(new AutoTiltIntake(RobotMap.scaleTilt));
+    	addSequential(new DriveByGyro(90, .9, 80, false));
+    	addSequential(new TurnByGyro(0, 2));
+    	addSequential(new DriveByGyro(0, .9, 20, false));
+    	addSequential(new TurnByGyro(-60, 2));
+    	addSequential(new AutoIntake(false));
     }
 }

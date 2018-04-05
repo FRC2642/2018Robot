@@ -4,6 +4,7 @@ import org.usfirst.frc.team2642.robot.OI;
 import org.usfirst.frc.team2642.robot.Robot;
 import org.usfirst.frc.team2642.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -25,28 +26,27 @@ public class IntakeCommand extends Command {
     protected void execute() {
     	if (isLeftTriggerPulled()) {
     		Robot.intake.intakeIn();
-    	}
-    	else if (isRightTriggerPulled()) {
-    		if (Robot.lift.liftPot.get() > (RobotMap.switchHeight + .15)) {
+    		}
+    		else if (isRightTriggerPulled()) {
+    			Robot.intake.intakeOut();
+    		}
+    		else if (isRightBumperHeld()) {
     			Robot.intake.intakeOut(1);
     		}
     		else {
-    			Robot.intake.intakeOut();
-    		}
+    			Robot.intake.stop();
     	}
-    	else {
-    		Robot.intake.stop();
-    	}
+    	
     	if (OI.xbox.getAButtonPressed()) {
     		Robot.intake.releaseIntake();
-    	}
-    	else if (OI.xbox.getBButtonPressed()) {
-    		Robot.intake.openIntake();
+    		}
+    		else if (OI.xbox.getBButtonPressed()) {
+    			Robot.intake.openIntake();
     		
-    	} else if (OI.xbox.getXButtonPressed() ) {
-    		Robot.intake.closeIntake();
+    		} else if (OI.xbox.getXButtonPressed() ) {
+    			Robot.intake.closeIntake();
+    		}
     	}
-    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -77,6 +77,14 @@ public class IntakeCommand extends Command {
     	return true;
     } else {
     	return false;	
+    	}
+    }
+    
+    public boolean isRightBumperHeld() {
+    	if(OI.auxXbox.getBumper(Hand.kRight)) {
+    		return true;
+    	} else {
+    		return false;
     	}
     }
 }

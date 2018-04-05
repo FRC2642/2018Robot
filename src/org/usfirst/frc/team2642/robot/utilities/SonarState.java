@@ -1,8 +1,9 @@
-package org.usfirst.frc.team2642.robot;
+package org.usfirst.frc.team2642.robot.utilities;
 
 public class SonarState {
 	private boolean isCubeInRange = false;
 	private double objectProximity = 0.0;
+	private boolean shouldRun = true;
 	
 	public boolean getIsCubeInRange() {
 		return isCubeInRange;
@@ -23,5 +24,13 @@ public class SonarState {
 	public void reset() {
 		isCubeInRange = false;
 		objectProximity = 0.0;
+	}
+	
+	public void setShouldRun(boolean value) {
+		shouldRun = value;
+	}
+	
+	public boolean getShouldRun() {
+		return shouldRun;
 	}
 }
