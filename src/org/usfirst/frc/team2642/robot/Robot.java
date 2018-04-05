@@ -18,7 +18,9 @@ import org.usfirst.frc.team2642.robot.subsystems.PixySubsystem;
 import org.usfirst.frc.team2642.robot.subsystems.RampSystem;
 import org.usfirst.frc.team2642.robot.subsystems.SonarSubsystem;
 import org.usfirst.frc.team2642.robot.utilities.AutoSelector;
+import org.usfirst.frc.team2642.robot.utilities.PixyState;
 import org.usfirst.frc.team2642.robot.utilities.RoboRioLogger;
+import org.usfirst.frc.team2642.robot.utilities.SonarState;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -65,9 +67,10 @@ public class Robot extends TimedRobot {
 	CameraServer server = CameraServer.getInstance();
 	
 	Thread sonarThread = new Thread(new Runnable() {
+		boolean shouldRun = true;
 		public void run() {
 			while (!RobotState.isDisabled()) {
-				if (getDistance() < 9) {
+				if (getDistance() < 14) {
 					synchronized(sonarState) {
 						sonarState.setIsCubeInRange(true);
 					}
@@ -75,18 +78,28 @@ public class Robot extends TimedRobot {
 				
 				synchronized(sonarState) {
 					sonarState.setObjectProximity(getDistance());
+					shouldRun = sonarState.getShouldRun();
 				}
-			};
+				
+				/*try {
+				Thread.yield();
+				Thread.sleep(20);
+				}
+				catch (InterruptedException e){
+				}*/
+			}
 		}
 			
 		private double getDistance() {
 		    return ((sonar.getVoltage() / (5.0/512)));
 		    //old conversion ((5.0/ 1024) / .2)
 		   }
+		
 	});
 	
 	Thread pixyThread = new Thread(new Runnable() {
 		public void run() {
+			boolean shouldRun = true;
 			while (!RobotState.isDisabled()) {
 				if (isCubeVisible()) {
 					synchronized(pixyState) {
@@ -94,7 +107,18 @@ public class Robot extends TimedRobot {
 						pixyState.setCubeCenter(getCubeCenter());
 					}
 				}
-			};
+				
+				synchronized(pixyState) {
+					shouldRun = pixyState.getShouldRun();
+				}
+				
+				/*try {
+					Thread.yield();
+					Thread.sleep(20);
+					}
+					catch (InterruptedException e){
+					}*/
+			}
 		}
 		
 	    public double getCubeCenter() {
@@ -129,7 +153,12 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		/*synchronized(sonarState) {
+			sonarState.setShouldRun(false);
+		}
+		synchronized(pixyState) {
+			pixyState.setShouldRun(false);
+		}*/
 	}
 
 	@Override
@@ -138,6 +167,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Height", lift.liftPot.get());
 	}
 
+	
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
 	 * between different autonomous modes using the dashboard. The sendable
@@ -201,6 +231,12 @@ public class Robot extends TimedRobot {
 		Robot.tilt.initDefaultCommand();
 		Robot.drive.invertMotor(false);
 		Robot.tilt.invertMotor(false);
+		synchronized(sonarState) {
+			sonarState.setShouldRun(false);
+		}
+		synchronized(pixyState) {
+			pixyState.setShouldRun(false);
+		}
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
@@ -217,6 +253,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Tilt", tilt.tiltPot.get());
 		SmartDashboard.putNumber("Height", lift.liftPot.get());
 		//SmartDashboard.putNumber("Pixy", pixy.getCubeCenter());
+		double sonarValue;
+		synchronized(sonarState) {
+			sonarValue = sonarState.getObjectProximity();
+		}
+		SmartDashboard.putNumber("Sonar Distance", sonarValue);
 	}
 
 	/**

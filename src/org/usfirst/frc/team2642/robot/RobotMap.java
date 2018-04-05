@@ -53,16 +53,18 @@ public class RobotMap {
 	public static int rightEncoderChannelB = 3;
 	
 	//Min and Max values for potentiometers
-	public static double minLift = .545;
-	public static double maxLift = .95;
+	public static double minLift = .56; 
+	public static double maxLift = .953;
 	public static double minTilt = .6;
 	public static double maxTilt = .85;
+	
+	public static double midpointLift = (minLift + maxLift) / 2;
 	
 	//Pot height and tilt
 	public static final double switchHeight = 0.7;
 	public static final double switchTilt = 0.7;
 	public static final double scaleHeight = maxLift;
-	public static final double scaleTilt = 0.83;
+	public static final double scaleTilt = 0.8;
 	public static final double cubeHeight = minLift;
 	public static final double cubeTilt = minTilt;
 	

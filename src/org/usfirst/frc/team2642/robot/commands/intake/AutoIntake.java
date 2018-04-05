@@ -54,7 +54,7 @@ public class AutoIntake extends Command {
     	else {
     		//Robot.intake.releaseIntake();
     		if (Robot.lift.liftPot.get() > (RobotMap.switchHeight + .15)) {
-    			Robot.intake.intakeOut(.72);
+    			Robot.intake.intakeOut(.8); //.72
     		}
     		else {
     			Robot.intake.intakeOut();

@@ -57,7 +57,7 @@ public class DriveByPixy extends Command {
     		powerCorrection = .25;
     	}*/
     	
-    	double power = basePower + .25;
+    	double power = basePower + .1;
     	if (currentHeading > 165) {
     		leftPower = (power - headingCorrection);
     		rightPower = (power + headingCorrection);
@@ -72,7 +72,8 @@ public class DriveByPixy extends Command {
     	}
     	Robot.drive.tankMove(leftPower, rightPower);
     	
-    	currentPulses = Robot.drive.getPulsesLeft();
+    	currentPulses = Robot.drive.getAveragePulses();
+    			//PulsesLeft();
     	encoderValue = currentPulses - VectorValues.lastEncoderPulses;
     	VectorValues.lastEncoderPulses = currentPulses;
     	VectorValues.vectorComponentX += (Math.sin(Robot.drive.getCurrentHeading() * (Math.PI / 180 )) * encoderValue);

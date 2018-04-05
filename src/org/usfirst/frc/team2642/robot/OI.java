@@ -11,10 +11,9 @@ import org.usfirst.frc.team2642.robot.commands.brake.DeployBrakeCommand;
 import org.usfirst.frc.team2642.robot.commands.brake.ResetBrakeCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.DeployHookCommand;
 import org.usfirst.frc.team2642.robot.commands.climb.ResetHookCommand;
-import org.usfirst.frc.team2642.robot.commands.ramp.DeployRampCommand;
+import org.usfirst.frc.team2642.robot.commands.intake.IntakeCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.LowerRampCommand;
 import org.usfirst.frc.team2642.robot.commands.ramp.RaiseRampCommand;
-import org.usfirst.frc.team2642.robot.commands.ramp.ResetRampCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -46,6 +45,7 @@ public class OI {
 	Button auxXboxB = new JoystickButton(auxXbox, 2);
 	Button auxXboxX = new JoystickButton(auxXbox, 3);
 	Button auxXboxY = new JoystickButton(auxXbox, 4);
+	Button auxXboxRB = new JoystickButton(auxXbox, 6);
 	/*
 	Left stick = tilt up and down 
 	
